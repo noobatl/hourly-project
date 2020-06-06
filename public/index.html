@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hourly - Task Management System</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+        <link rel="stylesheet" href="assets/css/style.css">
+
+    </head>
+    <body>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/projects"><img src="/assets/img/hourly-logo.PNG" class="site-logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Projects <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="team-members.html">Team Members</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="time.html">Time</a>
+                    </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0">
+                    <a class="logout btn-primary" href="#">Logout</a>
+                </div>  
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 project-list-wrapper">
+                    <h2>Projects</h2>
+                    <ul class="list-of-projects">
+                        <!--List of projects should be generated using the number of projects in the projects table.-->
+                        <!--Sample LI-->
+                        <!-- <li class="project-1">Project 1</li> -->
+
+                    </ul>
+                    <p class="add-project"><a href="add-project.html"><i class="fas fa-plus"></i> Add Project</a></p>
+                </div>
+                <div class="col project-details-wrapper">
+                    <h2>Project Details</h2>
+                    <div class="current-project-details">
+                        <h3 class="selected-project"><!--Loads name of project selected--></h3><p class="project-change-icons"><i class="fas fa-edit edit-project"></i><i class="fas fa-save save-project"></i><i class="fas fa-trash delete-project"></i></p>
+                        <p class="project-status"><strong>Status:</strong><span class="current-project-status"><!--Queried from Project table based on Current Project Selected--></span></p>
+                        <p class="project-assignees"><strong>Assignees:</strong><span class="current-project-assignees"><!--Queried from Project table based on Current Project Selected--></span></p>
+                        <p class="project-budget"><strong>Budget:</strong><span class="current-project-budget"><!--Queried from Project table based on Current Project Selected--></span></p>
+                        <p class="current-project-desc"><!--Queried from Project table based on Current Project Selected--></p>
+
+                        <div class="current-project-task">
+                            <ul class="list-of-project-task">
+                                <!--List of task should be queried from the task table based on the project selected-->
+                                <!--Sample LI-->
+                                <!-- <li class="task-item">
+                                    <p>
+                                        <input type="checkbox" class="completed-task">
+                                        <span class="task-title">Will be populated from task table</span><br/>
+                                        <strong>Assigned to:</strong><span class="task-assignee">Will be populated from task table</span><br/>
+                                        <strong>Due:</strong><span class="task-due-date">Will be populated from the task table</span>
+                                    </p>
+                                </li> -->
+                            </ul>
+                        </div>
+
+                        <p class="add-task"><i class="fas fa-plus"></i> Add Task</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Vertically centered modal : Add New Task-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Add New Task</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <input type="input" class="form-control" id="newTaskName" placeholder="First Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Assigned To:</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <!-- Options will be loaded based on active members -->
+                                    <!-- Sample Option -->
+                                    <!-- <option>Team Member Name</option> -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="newTaskNotes">Notes</label>
+                                <textarea class="form-control" id="newTaskNotes" rows="4"></textarea>
+                            </div>
+                        </form>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="/assets/js/index.js"></script>
+    </body>
+</html>
