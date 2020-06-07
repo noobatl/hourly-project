@@ -4,13 +4,18 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INT,
             autoIncrement: true,
             primaryKey: true,
-
         },
         taskName: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
         },
+        projectID: {
 
-    })
-}
+        },
+        assignedUserID: {
+
+        },
+    });
+    return Task;
+};
