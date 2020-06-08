@@ -16,7 +16,7 @@ app.use(express.static("public"));
 
 
 //Routing for site
-require("./routes/api-routes.js")(app);
+require("./app/routes/api-routes")(app);
 
 //UNCOMMENT WHEN DATABASES IN MODELS ARE SET-UP
 // db.sequelize.sync().then(function() {
@@ -25,6 +25,6 @@ require("./routes/api-routes.js")(app);
 //   });
 // });
 
-app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
+app.listen(PORT, function () {
+  console.log("App listening on PORT " + PORT);
+});
