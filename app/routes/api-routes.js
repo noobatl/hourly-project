@@ -47,9 +47,11 @@ module.exports = function (app) {
     app.post("/api/projects", function (req, res) {
 
         db.projects.create({
-
-            //Insert database information here
-
+            taskname: req.body.title,
+            // should this be projectID? should display project name.
+            projectID: req.body.projectID,
+            // same as above, but should display team member name
+            userID: req.body.userID
         }).then(function (dbprojects) {
             res.json(dbprojects);
         });
