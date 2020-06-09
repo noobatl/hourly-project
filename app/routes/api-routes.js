@@ -36,8 +36,11 @@ module.exports = function (app) {
     app.post("/api/tasks", function (req, res) {
 
         db.tasks.create({
-
-            //Insert database information here
+            taskname: req.body.title,
+            // should this be projectID? should display project name.
+            projectID: req.body.projectID,
+            // same as above, but should display team member name
+            userID: req.body.userID
 
         }).then(function (dbtasks) {
             res.json(dbtasks);
@@ -47,11 +50,8 @@ module.exports = function (app) {
     app.post("/api/projects", function (req, res) {
 
         db.projects.create({
-            taskname: req.body.title,
-            // should this be projectID? should display project name.
-            projectID: req.body.projectID,
-            // same as above, but should display team member name
-            userID: req.body.userID
+            //Insert database information here
+
         }).then(function (dbprojects) {
             res.json(dbprojects);
         });
