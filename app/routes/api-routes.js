@@ -40,7 +40,7 @@ module.exports = function (app) {
             // should this be projectID? should display project name.
             projectID: req.body.projectID,
             // same as above, but should display team member name
-            assignedUserID: req.body.userID
+            assignedUserID: req.body.assignedUserID
 
         }).then(function (dbtasks) {
             res.json(dbtasks);
