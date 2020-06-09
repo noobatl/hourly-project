@@ -19,5 +19,15 @@ module.exports = function(sequelize, DataTypes) {
             autoIncrement: true,
         },
     });
+
+    Task.associate = function(models) {
+        Task.belongsTo(models.Project, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+
+
     return Task;
 };
