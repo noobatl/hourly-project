@@ -11,10 +11,12 @@ module.exports = function(sequelize, DataTypes) {
             unique: true,
         },
         projectID: {
-
+            type: DataTypes.INT,
+            autoIncrement: true,
         },
         assignedUserID: {
-
+            type: DataTypes.INT,
+            autoIncrement: true,
         },
     });
     return Task;
