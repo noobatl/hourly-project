@@ -137,4 +137,11 @@ module.exports = function (app) {
         });
     });
 
+    //Logout function, will send user to login page.
+    app.get("/logout", function(req, res) {
+        req.logout();
+        res.redirect("/");
+      });
+    
+
 }

@@ -1,9 +1,9 @@
-
 const express = require("express");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+const db = require("./app/models")
 
 //Create files for each table in database -- UNCOMMENT AFTER DATABASE IS SET
 //const db = require("./app/models");
@@ -11,20 +11,19 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
 app.use(express.static("public"));
 
-
 //Routing for site
-require("./routes/api-routes.js")(app);
+require("./app/routes/api-routes")(app);
 
-//UNCOMMENT WHEN DATABASES IN MODELS ARE SET-UP
-// db.sequelize.sync().then(function() {
-//   app.listen(PORT, function() {
-//     console.log("App listening on PORT " + PORT);
-//   });
-// });
-
-app.listen(PORT, function() {
+//Model has been setup
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
+});
+
+app.listen(PORT, function () {
+  console.log("App listening on PORT " + PORT);
+});
+
