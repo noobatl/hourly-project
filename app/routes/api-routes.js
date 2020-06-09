@@ -36,12 +36,10 @@ module.exports = function (app) {
     app.post("/api/tasks", function (req, res) {
 
         db.tasks.create({
-            taskname: req.body.title,
-            // should this be projectID? should display project name.
+            taskID: req.body.taskID,
+            taskName: req.body.title,
             projectID: req.body.projectID,
-            // same as above, but should display team member name
             assignedUserID: req.body.assignedUserID
-
         }).then(function (dbtasks) {
             res.json(dbtasks);
         });
