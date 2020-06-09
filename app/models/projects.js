@@ -3,7 +3,7 @@ module.exports = function (sequelize, DataTypes) {
         name : DataTypes.STRING,
         budget : DataTypes.INTEGER,
         description : DataTypes.STRING,
-        status : boolean
+        status : DataTypes.BOOLEAN,
     })
 
     return Project;
