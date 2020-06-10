@@ -1,10 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
     var Task = sequelize.define("Task", {
-        taskID: {
+        taskID:{
             type: DataTypes.INTEGER,
             autoIncrement: true,
-            primaryKey: true,
-        },
+            primaryKey: true
+        }, 
         taskName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -26,6 +26,15 @@ module.exports = function(sequelize, DataTypes) {
             foreignKey: {
                 allowNull: false
             }
+        });
+        Task.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+
+        Task.hasMany(models.TimeEntry, {
+            onDelete: "cascade"
         });
     };
 
