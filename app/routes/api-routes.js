@@ -48,7 +48,10 @@ module.exports = function (app) {
 
         db.projects.create({
 
-            //Insert database information here
+            name: req.body.addProjectName,
+            budget: req.body.addProjectBudget,
+            description: req.body.addProjectDesc,
+            status: req.body.addProjectStatus
 
         }).then(function (dbprojects) {
             res.json(dbprojects);
@@ -124,7 +127,10 @@ module.exports = function (app) {
     app.put("/api/projects", function (req, res) {
         db.projects.update({
 
-            //Database information
+            name: req.body.addProjectName,
+            budget: req.body.addProjectBudget,
+            description: req.body.addProjectDesc,
+            status: req.body.addProjectStatus
 
         }, {
             where: {
@@ -136,10 +142,10 @@ module.exports = function (app) {
     });
 
     //Logout function, will send user to login page.
-    app.get("/logout", function(req, res) {
+    app.get("/logout", function (req, res) {
         req.logout();
         res.redirect("/");
-      });
-    
+    });
+
 
 }
