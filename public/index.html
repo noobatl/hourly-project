@@ -70,14 +70,14 @@
                             </ul>
                         </div>
 
-                        <p class="add-task"><i class="fas fa-plus"></i> Add Task</p>
+                        <p class="add-task" id="newTaskButton" data-toggle="modal" data-target="#taskModal"><i class="fas fa-plus"></i> Add Task</p>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Vertically centered modal : Add New Task-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+        <div class="modal hide" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalCenterTitle">Add New Task</h5>
@@ -88,19 +88,27 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <input type="input" class="form-control" id="newTaskName" placeholder="First Name">
+                                <input type="input" class="form-control" id="newTaskName" placeholder="Task Name">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Assigned To:</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control" id="assignedUser">
                                     <!-- Options will be loaded based on active members -->
                                     <!-- Sample Option -->
                                     <!-- <option>Team Member Name</option> -->
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="newTaskNotes">Notes</label>
-                                <textarea class="form-control" id="newTaskNotes" rows="4"></textarea>
+                                <label for="exampleFormControlSelect2">Assigned To:</label>
+                                <select class="form-control" id="assignedProject">
+                                    <!-- Options will be loaded based on active projects -->
+                                    <!-- Sample Option -->
+                                    <!-- <option>Project Name</option> -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="newTaskNotes">Description</label>
+                                <textarea class="form-control" id="taskDescription" rows="4"></textarea>
                             </div>
                         </form>
                         
