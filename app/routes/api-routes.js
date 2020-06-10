@@ -36,9 +36,10 @@ module.exports = function (app) {
     app.post("/api/tasks", function (req, res) {
 
         db.tasks.create({
-
-            //Insert database information here
-
+            taskID: req.body.taskID,
+            taskName: req.body.title,
+            projectID: req.body.projectID,
+            assignedUserID: req.body.assignedUserID
         }).then(function (dbtasks) {
             res.json(dbtasks);
         });
@@ -47,7 +48,6 @@ module.exports = function (app) {
     app.post("/api/projects", function (req, res) {
 
         db.projects.create({
-
             //Insert database information here
 
         }).then(function (dbprojects) {
