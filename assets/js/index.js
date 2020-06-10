@@ -1,9 +1,9 @@
-// Stops modal from closing when clicked outside
-
+$("#taskModal").css("display", "none");
 
 $(document).ready(function() {
-    $("#taskModal").addClass('hide');
+    $("#taskModal").modal("hide");
 
+    // Stops modal from closing when clicked outside
     $("#taskModal").modal({
         backdrop: 'static',
         keyboard: false
