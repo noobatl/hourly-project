@@ -16,6 +16,9 @@ module.exports = function(sequelize, DataTypes) {
         assignedUserID: {
             type: DataTypes.INTEGER,
         },
+        taskDescription: {
+            type: DataTypes.STRING,
+        }
     });
 
     Task.associate = function(models) {

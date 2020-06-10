@@ -21,8 +21,12 @@
     "express": "^4.17.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
+<<<<<<< HEAD
     "nodemon": "^2.0.4",
     "sequelize": "^2.0.0-rc1",
+=======
+    "sequelize": "^5.15.1",
+>>>>>>> 8d67a93339feac9b9f880bc1b3aad460ce5ac1bf
     "sequelize-cli": "^5.5.1"
   }
 }
