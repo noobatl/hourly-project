@@ -4,7 +4,13 @@ module.exports = function (sequelize, DataTypes) {
         budget : DataTypes.INTEGER,
         description : DataTypes.TEXT,
         status : DataTypes.STRING
-    })
+    });
+
+    Project.associate = function(models) {
+        Project.hasMany(models.Post, {
+            onDelete: "cascade"
+        });
+    };
 
     return Project;
-}
+};

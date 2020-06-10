@@ -2,7 +2,6 @@ module.exports = function(sequelize, DataTypes) {
     var Task = sequelize.define("Task", {
         taskID: {
             type: DataTypes.INT,
-            autoIncrement: true,
             primaryKey: true,
         },
         taskName: {
@@ -10,14 +9,9 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             unique: true,
         },
-        projectID: {
-            type: DataTypes.INT,
-            autoIncrement: true,
-        },
-        assignedUserID: {
-            type: DataTypes.INT,
-            autoIncrement: true,
-        },
+        projectID: DataTypes.INT,
+        assignedUserID:  DataTypes.INT
+        
     });
 
     Task.associate = function(models) {
