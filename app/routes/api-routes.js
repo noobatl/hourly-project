@@ -38,8 +38,8 @@ module.exports = function (app) {
         db.tasks.create({
             taskName: req.body.newTaskName,
             taskDescription: req.body.taskDescription,
-            projectID: req.body.projectID,
-            assignedUserID: req.body.assignedUserID
+            projectID: req.body.assignedProject,
+            assignedUserID: req.body.assignedUser
         }).then(function (dbtasks) {
             res.json(dbtasks);
         });
