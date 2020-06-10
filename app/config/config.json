@@ -1,13 +1,8 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
     "password": "notmypassword",
     "database": "hourly_db",
-=======
-    "password": null,
-    "database": "database_development",
->>>>>>> d395dee778d7ef88e587aa9f3ff9948a1835f50f
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
