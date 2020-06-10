@@ -26,7 +26,12 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
+
+        Task.hasMany(models.TimeEntry, {
+            onDelete: "cascade"
+        });
     };
+
 
     return Task;
 };
