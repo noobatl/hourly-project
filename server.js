@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 8080;
 const db = require("./app/models")
 
 //Create files for each table in database -- UNCOMMENT AFTER DATABASE IS SET
-//const db = require("./app/models");
+// const db = require("./app/models");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

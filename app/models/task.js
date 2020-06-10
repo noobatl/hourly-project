@@ -10,9 +10,9 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             unique: true,
         },
-        projectID: {
-            type: DataTypes.INTEGER,
-        },
+        // projectID: {
+        //     type: DataTypes.INTEGER,
+        // },
         assignedUserID: {
             type: DataTypes.INTEGER,
         },
@@ -28,6 +28,17 @@ module.exports = function(sequelize, DataTypes) {
             }
         });
     };
+
+    // Task.associate = function(models) {
+    //     Task.belongsTo(models.User, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    //     Task.hasMany(models.TimeEntry, {
+    //         onDelete: "cascade"
+    //     });
+    // }
 
     return Task;
 };

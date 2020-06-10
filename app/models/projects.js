@@ -6,5 +6,10 @@ module.exports = function (sequelize, DataTypes) {
         status : DataTypes.BOOLEAN,
     })
 
+    Project.associate = function (models) {
+        Project.hasMany(models.Task, {
+            onDelete: "cascade"
+        });
+    };
     return Project;
 }
