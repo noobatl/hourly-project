@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "yourRootPassword",
-    "database": "database_development",
+    "database": "hourly_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false

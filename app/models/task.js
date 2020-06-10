@@ -10,14 +10,8 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             unique: true,
         },
-        projectID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-        },
-        assignedUserID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-        },
+        projectID: DataTypes.INTEGER,
+        assignedUserID: DataTypes.INTEGER
     });
 
     Task.associate = function(models) {
