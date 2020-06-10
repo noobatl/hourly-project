@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
         },
         taskDescription: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
         }
     });
 
