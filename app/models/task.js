@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
     var Task = sequelize.define("Task", {
         taskID: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
@@ -11,13 +11,14 @@ module.exports = function(sequelize, DataTypes) {
             unique: true,
         },
         projectID: {
-            type: DataTypes.INT,
-            autoIncrement: true,
+            type: DataTypes.INTEGER,
         },
         assignedUserID: {
-            type: DataTypes.INT,
-            autoIncrement: true,
+            type: DataTypes.INTEGER,
         },
+        taskDescription: {
+            type: DataTypes.TEXT,
+        }
     });
 
     Task.associate = function(models) {
@@ -27,7 +28,6 @@ module.exports = function(sequelize, DataTypes) {
             }
         });
     };
-
 
     return Task;
 };

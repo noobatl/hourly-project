@@ -36,10 +36,10 @@ module.exports = function (app) {
     app.post("/api/tasks", function (req, res) {
 
         db.tasks.create({
-            taskID: req.body.taskID,
-            taskName: req.body.title,
-            projectID: req.body.projectID,
-            assignedUserID: req.body.assignedUserID
+            taskName: req.body.newTaskName,
+            taskDescription: req.body.taskDescription,
+            projectID: req.body.assignedProject,
+            assignedUserID: req.body.assignedUser
         }).then(function (dbtasks) {
             res.json(dbtasks);
         });

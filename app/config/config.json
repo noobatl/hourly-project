@@ -1,15 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "database_development",
+    "password": "obomsa12",
+    "database": "hourly_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "obomsa12",
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql",
@@ -17,7 +17,7 @@
   },
   "production": {
     "username": "root",
-    "password": null,
+    "password": "obomsa12",
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql",
