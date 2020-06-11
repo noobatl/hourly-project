@@ -1,11 +1,13 @@
 module.exports = function(sequelize, DataTypes){
 
     var TimeEntry = sequelize.define("TimeEntry",{
+
         timeEntryId:{
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
+
         date:{
             type: DataTypes.DATE
         }, 
@@ -21,6 +23,7 @@ module.exports = function(sequelize, DataTypes){
     TimeEntry.associate = function(models) {
         TimeEntry.belongsTo(models.Task, {
             foreignKey: {
+              allowNull: false
             }
         });
     };

@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes){
 
-    var User = sequelize.define("User", {
-        userId:{
+    const User = sequelize.define("User",{
+        userID:{
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
@@ -14,14 +14,10 @@ module.exports = function(sequelize, DataTypes){
              type:DataTypes.STRING,
              allowNull: false
         }, 
-        username: {
+        role: {
             type:DataTypes.STRING,
              allowNull: false,
              unique: true
-        },
-        password: {
-            type:DataTypes.STRING,
-            allowNull: false
         },
         email: {
             type:DataTypes.STRING,
@@ -40,6 +36,7 @@ module.exports = function(sequelize, DataTypes){
             through: 'UserProject'
         });
     }
+
     return User;
 }
 
