@@ -20,19 +20,31 @@ module.exports = function(app) {
     });
 
     // If a user who is not logged in tries to access these routes they will be redirected to the signup page
-    app.get("/", isAuthenticated, function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/index.html"));
+    app.get("/", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/login.html"));
     });
+
+    app.get("/login", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/login.html"));
+    })
+
+    app.get("/create", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/create-account.html"));
+    })
+
+    app.get("/home", isAuthenticated, function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/index.html"))
+    })
 
     app.get("/time", isAuthenticated, function(req, res) {
         res.sendFile(path.join(__dirname, "../public/time.html"))
     });
 
-    app.get("/add-project", isAuthenticated, function(req, res) {
+    app.get("/add", isAuthenticated, function(req, res) {
         res.sendFile(path.join(__dirname, "../public/add-project.html"))
     })
 
-    app.get("/team-members", isAuthenticated, function(req, res) {
+    app.get("/team", isAuthenticated, function(req, res) {
         res.sendFile(path.join(__dirname, "../public/team-project.html"))
     })
 };
