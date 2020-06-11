@@ -1,10 +1,43 @@
 module.exports = function (sequelize, DataTypes) {
-    const Project = sequelize.define("Project", {
-        name : DataTypes.STRING,
-        budget : DataTypes.INTEGER,
-        description : DataTypes.STRING,
-        status : DataTypes.BOOLEAN,
-    })
+    var Project = sequelize.define("Project", {
+
+        projectId: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        budget: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+
+        status: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+        }
+    });
+
+    Project.associate = function (models) {
+
+        Project.hasMany(models.Task, {
+            onDelete: "cascade"
+        });
+
+        Project.belongsToMany(models.User, {
+            through: 'UserProject'
+        });
+
+    }
+
+
 
     return Project;
 }

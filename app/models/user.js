@@ -1,14 +1,14 @@
 module.exports = function(sequelize, DataTypes){
 
-    var User = sequelize.define(User,{
-        userID:{
+    var User = sequelize.define("User", {
+        userId:{
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         }, 
         firstname: {
             type:DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         lastname: {
              type:DataTypes.STRING,
@@ -26,10 +26,20 @@ module.exports = function(sequelize, DataTypes){
         email: {
             type:DataTypes.STRING,
             allowNull: false,
-            unique: true
+            unique: true,
+            validate: {
+                isEmail: true
+              }
         }
     });
+    User.associate = function (models) {
+        User.hasMany(models.Task, {
+        });
 
+        User.belongsToMany(models.Project, {
+            through: 'UserProject'
+        });
+    }
     return User;
 }
 

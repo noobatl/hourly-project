@@ -1,33 +1,37 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var Task = sequelize.define("Task", {
-        taskID: {
+        taskId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
-            primaryKey: true,
+            primaryKey: true
         },
         taskName: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
-        },
-        projectID: {
-            type: DataTypes.INTEGER,
-        },
-        assignedUserID: {
-            type: DataTypes.INTEGER,
-        },
-        taskDescription: {
-            type: DataTypes.TEXT,
+            unique: true
         }
     });
 
-    Task.associate = function(models) {
+    Task.associate = function (models) {
+
         Task.belongsTo(models.Project, {
             foreignKey: {
                 allowNull: false
             }
         });
-    };
+        Task.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+
+    
+    }
+    
+
+
 
     return Task;
 };
+
+
