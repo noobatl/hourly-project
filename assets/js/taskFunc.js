@@ -3,11 +3,14 @@ $(document).ready(function() {
   var taskForm = $("#task");
   var memberSelect = $("#teamSelect");
   var projectSelect = $("#projectSelect");
+  var body = $("#description");
 
   $(taskForm).on("submit", handleFormSubmit);
   var url = window.location.search;
   var taskId;
   var memberId;
+  var projectId;
+  var bodyId;
   var updating = false;
 
   if (url.indexOf("?task_id=") !== -1) {
@@ -17,12 +20,18 @@ $(document).ready(function() {
   else if (url.indexOf("?member_id=") !== -1) {
     memberId = url.split("=")[1];
   }
+  else if (url.indexOf("?project_id=") !== -1) {
+    projectId = url.split("=")[1];
+  }
+  else if (url.indexOf("?body_id=") !== -1) {
+    bodyId = url.split("=")[1];
+  }
 
   getMembers();
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (!newTaskName.val().trim() || !memberSelect.val()) {
+    if (!newTaskName.val().trim() || !body.val().trim() || !projectSelect.val() || !memberSelect.val()) {
       return;
     }
 
@@ -30,6 +39,8 @@ $(document).ready(function() {
       name: newTaskName
         .val()
         .trim(),
+      description: body.val(),
+      ProjectId: projectSelect.val(),
       MemberId: memberSelect.val()
     };
 
@@ -57,13 +68,15 @@ $(document).ready(function() {
     case "member":
       queryUrl = "/api/User/" + id;
       break;
+    case "project":
+      queryURL = "/api/Project" + id;
     default:
       return;
     }
     $.get(queryUrl, function(data) {
       if (data) {
         console.log(data.MemberId || data.id);
-        newTaskName.val(data.title);
+        newTaskName.val(data.name);
         memberId = data.MemberId || data.id;
         updating = true;
       }
