@@ -14,7 +14,7 @@ app.use(express.static("public"));
 require("./app/routes/api-project")(app);
 require("./app/routes/api-task")(app);
 require("./app/routes/api-user")(app);
-require("./app/routes/api-time")(app);
+// require("./app/routes/api-time")(app);
 
 
 //Model has been setup

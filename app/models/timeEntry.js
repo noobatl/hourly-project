@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes){
 
-    var TimeEntry = sequelize.define(TimeEntry,{
+    var TimeEntry = sequelize.define("TimeEntry",{
         date:{
             type: DataTypes.DATE
         }, 
         timespent: {
-            type:DataTypes.INTEGER
+            type: DataTypes.INTEGER
         },
         notes: {
              type:DataTypes.STRING,
