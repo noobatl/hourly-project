@@ -55,7 +55,7 @@ $(document).ready(function() {
 
   function submitTask(task) {
     $.post("/api/Task", post, function() {
-      window.location.href = "/index";
+      window.location.href = "/home";
     });
   }
 
@@ -77,6 +77,7 @@ $(document).ready(function() {
       if (data) {
         console.log(data.MemberId || data.id);
         newTaskName.val(data.name);
+        projectId = data.ProjectId || data.id;
         memberId = data.MemberId || data.id;
         updating = true;
       }
@@ -84,7 +85,7 @@ $(document).ready(function() {
   }
 
   function getMembers() {
-    $.get("/api/User", renderMemberList);
+    $.get("/api/User", renderMemberList, renderProjectList);
   }
   function renderMemberList(data) {
     if (!data.length) {
@@ -100,11 +101,33 @@ $(document).ready(function() {
     memberSelect.append(rowsToAdd);
     memberSelect.val(memberId);
   }
+  
+  function renderProjectList(data) {
+    if (!data.length) {
+      window.location.href = "/home";
+    }
+    var rowsToAdd = [];
+    for (var i = 0; i < data.length; i++) {
+      rowsToAdd.push(createProjectRow(data[i]));
+    }
+    projectSelect.empty();
+    console.log(rowsToAdd);
+    console.log(projectSelect);
+    projectSelect.append(rowsToAdd);
+    projectSelect.val(projectId);
+  }
 
   function createMemberRow(member) {
     var listOption = $("<option>");
     listOption.attr("value", member.id);
     listOption.text(member.name);
+    return listOption;
+  }
+
+  function createProjectRow(project) {
+    var listOption = $("<option>");
+    listOption.attr("value", project.id);
+    listOption.text(project.name);
     return listOption;
   }
 
@@ -115,7 +138,7 @@ $(document).ready(function() {
       data: task
     })
       .then(function() {
-        window.location.href = "/index";
+        window.location.href = "/home";
       });
   }
 });
