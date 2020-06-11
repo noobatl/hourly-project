@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes){
 
-    var TimeEntry = sequelize.define(TimeEntry,{
+    var TimeEntry = sequelize.define("TimeEntry",{
         date:{
             type: DataTypes.DATE
         }, 
