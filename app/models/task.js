@@ -1,5 +1,6 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var Task = sequelize.define("Task", {
+
         taskID:{
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -14,11 +15,12 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
         },
         taskDescription: {
-            type: DataTypes.TEXT,
+            type: DataTypes.TEXT
         }
     });
 
-    Task.associate = function(models) {
+    Task.associate = function (models) {
+
         Task.belongsTo(models.Project, {
             foreignKey: {
                 allowNull: false
@@ -48,3 +50,5 @@ module.exports = function(sequelize, DataTypes) {
 
     return Task;
 };
+
+
