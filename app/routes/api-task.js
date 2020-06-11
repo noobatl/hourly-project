@@ -12,6 +12,7 @@ module.exports = function (app) {
         db.Task.create({
             
             taskName: req.body.title,
+            taskDescription: req.body.description,
             projectID: req.body.projectID,
             assignedUserID: req.body.assignedUserID
 
@@ -37,6 +38,7 @@ module.exports = function (app) {
         db.Task.update({
 
             taskName: req.body.title,
+            taskDescription: req.body.description,
             projectID: req.body.projectID,
             assignedUserID: req.body.assignedUserID
 

@@ -1,5 +1,6 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var Task = sequelize.define("Task", {
+
         taskID:{
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -10,12 +11,16 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             unique: true,
         },
-        projectID: DataTypes.INTEGER,
-        assignedUserID:  DataTypes.INTEGER
-        
+        assignedUserID: {
+            type: DataTypes.INTEGER,
+        },
+        taskDescription: {
+            type: DataTypes.TEXT
+        }
     });
 
-    Task.associate = function(models) {
+    Task.associate = function (models) {
+
         Task.belongsTo(models.Project, {
             foreignKey: {
                 allowNull: false
@@ -32,6 +37,18 @@ module.exports = function(sequelize, DataTypes) {
         });
     };
 
+    // Task.associate = function(models) {
+    //     Task.belongsTo(models.User, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    //     Task.hasMany(models.TimeEntry, {
+    //         onDelete: "cascade"
+    //     });
+    // }
 
     return Task;
 };
+
+
