@@ -16,7 +16,7 @@ $(document).ready(function() {
   // In '?post_id=1', postId is 1
   if (url.indexOf("?task_id=") !== -1) {
     taskId = url.split("=")[1];
-    getPostData(taskId, "task");
+    getTaskData(taskId, "task");
   }
   // Otherwise if we have an member_id in our url, preset the member select box to be our member
   else if (url.indexOf("?member_id=") !== -1) {
@@ -60,7 +60,7 @@ $(document).ready(function() {
   }
 
   // Gets post data for the current post if we're editing, or if we're adding to an author's existing posts
-  function getPostData(id, type) {
+  function getTaskData(id, type) {
     var queryUrl;
     switch (type) {
     case "task":
@@ -93,9 +93,9 @@ $(document).ready(function() {
   // to create an author first
   function renderMemberList(data) {
     if (!data.length) {
-      window.location.href = "/team-members";
+      window.location.href = "/team";
     }
-    $(".hidden").removeClass("hidden");
+    // $(".hidden").removeClass("hidden");
     var rowsToAdd = [];
     for (var i = 0; i < data.length; i++) {
       rowsToAdd.push(createMemberRow(data[i]));
@@ -120,7 +120,7 @@ $(document).ready(function() {
     $.ajax({
       method: "PUT",
       url: "/api/Task",
-      data: post
+      data: task
     })
       .then(function() {
         window.location.href = "/index";
