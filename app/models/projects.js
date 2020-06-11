@@ -7,16 +7,20 @@ module.exports = function (sequelize, DataTypes) {
             primaryKey: true
         },
         title: {
-            type: DataTypes.STRING,  
+            type: DataTypes.STRING, 
+            allowNull : false 
         },
         budget: {
-            type: DataTypes.INTEGER,  
+            type: DataTypes.INTEGER, 
+            allowNull : false  
         },
         description: {
-            type: DataTypes.TEXT,   
+            type: DataTypes.TEXT,
+            allowNull : false    
         },
         team : {
             type: DataTypes.STRING,
+            allowNull : true 
         },
         // status: {
         //     type: DataTypes.STRING,
