@@ -3,7 +3,7 @@ const db = require("../models");
 module.exports = function (app) {
     app.get("/api/Project", function (req, res) {
         db.Project.findAll({
-            //include: [db.Task]
+            include: [db.Task]
         }).then(function (dbProject) {
             res.json(dbProject)
         });
@@ -13,11 +13,11 @@ module.exports = function (app) {
         
         db.Project.create({
 
-            name: req.body.addProjectName,
-            budget: req.body.addProjectBudget,
-            description: req.body.addProjectDesc,
-            team : req.body.addProjectTeamMembers,
-            status: req.body.addProjectStatus
+            title: req.body.title,
+            budget: req.body.budget,
+            description: req.body.description,
+            team : req.body.team,
+            //status: req.body.status
 
         }).then(function (dbProject) {
             res.json(dbProject);
@@ -39,11 +39,11 @@ module.exports = function (app) {
     app.put("/api/Project", function (req, res) {
         db.Project.update({
 
-            name: req.body.addProjectName,
+            title: req.body.addProjectName,
             budget: req.body.addProjectBudget,
             description: req.body.addProjectDesc,
             team : req.body.addProjectTeamMembers,
-            status: req.body.addProjectStatus
+            //status: req.body.addProjectStatus
 
         }, {
             where: {

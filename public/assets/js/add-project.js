@@ -16,7 +16,7 @@ $(document).ready(function () {
         }
 
         let newProject = {
-            name : titleInput.val().trim(),
+            title : titleInput.val().trim(),
             budget : budgetInput.val(),
             description : descriptionInput.val().trim(),
             team : teamMembers.val(),
