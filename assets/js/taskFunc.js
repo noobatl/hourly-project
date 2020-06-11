@@ -5,6 +5,7 @@ $(document).ready(function() {
   var projectSelect = $("#projectSelect");
   var body = $("#description");
 
+  // on form submit, call function to handle
   $(taskForm).on("submit", handleFormSubmit);
   var url = window.location.search;
   var taskId;
@@ -12,6 +13,7 @@ $(document).ready(function() {
   var projectId;
   var bodyId;
   var updating = false;
+
 
   if (url.indexOf("?task_id=") !== -1) {
     taskId = url.split("=")[1];
@@ -28,6 +30,7 @@ $(document).ready(function() {
   }
 
   getMembers();
+  getProjects();
 
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -54,7 +57,7 @@ $(document).ready(function() {
   }
 
   function submitTask(task) {
-    $.post("/api/Task", post, function() {
+    $.post("/api/Task", task, function() {
       window.location.href = "/home";
     });
   }
@@ -85,8 +88,13 @@ $(document).ready(function() {
   }
 
   function getMembers() {
-    $.get("/api/User", renderMemberList, renderProjectList);
+    $.get("/api/User", renderMemberList);
   }
+
+  function getProjects() {
+    $.get("/api/Project", renderProjectList);
+  }
+
   function renderMemberList(data) {
     if (!data.length) {
       window.location.href = "/team";
