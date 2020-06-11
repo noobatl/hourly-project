@@ -11,9 +11,9 @@ module.exports = function (app) {
 
         db.Time.create({
 
-            date: req.body. //enter html id
-            timespent: req.body. //enter html id
-            notes: req.body. //enter html id
+            date: req.body.date,
+            timespent: req.body.timespent,
+            notes: req.body.notes
 
         }).then(function (dbTime) {
             res.json(dbTime);
@@ -35,9 +35,9 @@ module.exports = function (app) {
     app.put("/api/Time", function (req, res) {
         db.Time.update({
 
-            date: req.body. //enter html id
-            timespent: req.body. //enter html id
-            notes: req.body. //enter html id
+            date: req.body.date,
+            timespent: req.body.timespent,
+            notes: req.body.notes
 
         }, {
             where: {

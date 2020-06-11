@@ -58,7 +58,7 @@ $(document).ready(function() {
 
   function submitTask(task) {
     $.post("/api/Task", task, function() {
-      window.location.href = "/home";
+      // window.location.href = "/home";
     });
   }
 
@@ -97,7 +97,7 @@ $(document).ready(function() {
 
   function renderMemberList(data) {
     if (!data.length) {
-      window.location.href = "/team";
+      // window.location.href = "/team";
     }
     var rowsToAdd = [];
     for (var i = 0; i < data.length; i++) {
@@ -112,7 +112,7 @@ $(document).ready(function() {
   
   function renderProjectList(data) {
     if (!data.length) {
-      window.location.href = "/home";
+      // window.location.href = "/home";
     }
     var rowsToAdd = [];
     for (var i = 0; i < data.length; i++) {
@@ -146,7 +146,7 @@ $(document).ready(function() {
       data: task
     })
       .then(function() {
-        window.location.href = "/home";
+        // window.location.href = "/home";
       });
   }
 });

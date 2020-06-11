@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
     var Task = sequelize.define("Task", {
 
-        taskID:{
+        taskId:{
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true

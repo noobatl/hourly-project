@@ -6,23 +6,26 @@ module.exports = function (sequelize, DataTypes) {
             autoIncrement: true,
             primaryKey: true
         },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
+        title: {
+            type: DataTypes.STRING, 
+            allowNull : false 
         },
         budget: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
+            type: DataTypes.INTEGER, 
+            allowNull : false  
         },
         description: {
             type: DataTypes.TEXT,
-            allowNull: false,
+            allowNull : false    
         },
-
-        status: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-        }
+        team : {
+            type: DataTypes.STRING,
+            allowNull : true 
+        },
+        // status: {
+        //     type: DataTypes.STRING,
+        //     
+        // }
     });
 
     Project.associate = function (models) {
