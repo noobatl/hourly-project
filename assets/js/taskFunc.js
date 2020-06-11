@@ -3,37 +3,28 @@ $(document).ready(function() {
   var taskForm = $("#task");
   var memberSelect = $("#teamSelect");
 
-  // Event listener for when the form is submitted
   $(taskForm).on("submit", handleFormSubmit);
-  // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
   var url = window.location.search;
   var taskId;
   var memberId;
-  // Sets a flag for whether or not we're updating a post to be false initially
   var updating = false;
 
-  // If we have this section in our url, we pull out the post id from the url
-  // In '?post_id=1', postId is 1
   if (url.indexOf("?task_id=") !== -1) {
     taskId = url.split("=")[1];
     getTaskData(taskId, "task");
   }
-  // Otherwise if we have an member_id in our url, preset the member select box to be our member
   else if (url.indexOf("?member_id=") !== -1) {
     memberId = url.split("=")[1];
   }
 
-  // Getting the members, and their tasks
   getMembers();
 
-  // A function for handling what happens when the form to create a new post is submitted
   function handleFormSubmit(event) {
     event.preventDefault();
-    // Wont submit the post if we are missing a body, title, or author
     if (!newTaskName.val().trim() || !memberSelect.val()) {
       return;
     }
-    // Constructing a newPost object to hand to the database
+
     var newTask = {
       name: newTaskName
         .val()
@@ -41,8 +32,6 @@ $(document).ready(function() {
       MemberId: memberSelect.val()
     };
 
-    // If we're updating a post run updatePost to update a post
-    // Otherwise run submitPost to create a whole new post
     if (updating) {
       newTask.id = taskId;
       updateTask(newTask);
@@ -52,7 +41,6 @@ $(document).ready(function() {
     }
   }
 
-  // Submits a new task and brings user to home/project page upon completion
   function submitTask(task) {
     $.post("/api/Task", post, function() {
       window.location.href = "/index";
