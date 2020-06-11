@@ -18,7 +18,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: false,
         },
-
+        team : {
+            type: DataTypes.STRING,
+            allowNull : true
+        },
         status: {
             type: DataTypes.BOOLEAN,
             allowNull: false,

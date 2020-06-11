@@ -16,6 +16,7 @@ module.exports = function (app) {
             name: req.body.addProjectName,
             budget: req.body.addProjectBudget,
             description: req.body.addProjectDesc,
+            team : req.body.addProjectTeamMembers,
             status: req.body.addProjectStatus
 
         }).then(function (dbProject) {
@@ -41,6 +42,7 @@ module.exports = function (app) {
             name: req.body.addProjectName,
             budget: req.body.addProjectBudget,
             description: req.body.addProjectDesc,
+            team : req.body.addProjectTeamMembers,
             status: req.body.addProjectStatus
 
         }, {
