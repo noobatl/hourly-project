@@ -2,6 +2,7 @@ $(document).ready(function() {
   var newTaskName = $("#newTaskName");
   var taskForm = $("#task");
   var memberSelect = $("#teamSelect");
+  var projectSelect = $("#projectSelect");
 
   $(taskForm).on("submit", handleFormSubmit);
   var url = window.location.search;
