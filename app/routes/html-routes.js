@@ -19,7 +19,6 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/login.html"));
     });
 
-    // If a user who is not logged in tries to access these routes they will be redirected to the signup page
     app.get("/", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/login.html"));
     });
@@ -32,6 +31,7 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/create-account.html"));
     })
 
+    // If a user who is not logged in tries to access these routes they will be redirected to the signup page
     app.get("/home", isAuthenticated, function(req, res) {
         res.sendFile(path.join(__dirname, "../public/index.html"))
     })
