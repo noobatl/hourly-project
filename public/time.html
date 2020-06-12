@@ -36,7 +36,7 @@
         </nav>
         <div class="container" id="list">
             <div class="row">
-                <h1>Track Time</h1><a class="add-team-member" data-toggle="modal" data-target="#addTeamMemberModal"><i class="fas fa-plus"></i> Add Time Entry</a>
+                <h1>Track Time</h1><a class="add-team-member" data-toggle="modal" data-target="#addTeamMemberModal"><button id = "addTimeBtn"><i class="fas fa-plus"></i> Add Time Entry</a></button>
                 <div class="task-time-container" id="timeContainer">
                     <ul class="list-group list-group-horizontal list-headers">
                         <li class="list-group-item">Project Name</li>
@@ -48,11 +48,11 @@
             </div>
         </div>
         <!-- Vertically centered modal: Add New Members -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="timeModal" tabindex="-1" role="dialog" aria-labelledby="timeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Add New Team Member</h5>
+                        <h5 class="modal-title" id="timeModalCenterTitle">Add New Team Member</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                         </button>

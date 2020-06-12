@@ -17,7 +17,7 @@ module.exports = function (app) {
             budget: req.body.budget,
             description: req.body.description,
             team : req.body.team,
-            //status: req.body.status
+            status: req.body.status
 
         }).then(function (dbProject) {
             res.json(dbProject);
@@ -39,11 +39,11 @@ module.exports = function (app) {
     app.put("/api/Project", function (req, res) {
         db.Project.update({
 
-            title: req.body.addProjectName,
-            budget: req.body.addProjectBudget,
-            description: req.body.addProjectDesc,
-            team : req.body.addProjectTeamMembers,
-            //status: req.body.addProjectStatus
+            title: req.body.title,
+            budget: req.body.budget,
+            description: req.body.description,
+            team : req.body.team,
+            status: req.body.status
 
         }, {
             where: {
@@ -53,5 +53,4 @@ module.exports = function (app) {
             res.json(dbProject);
         });
     });
-
 }

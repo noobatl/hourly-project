@@ -22,10 +22,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull : true 
         },
-        // status: {
-        //     type: DataTypes.STRING,
-        //     
-        // }
+        status: {
+            type: DataTypes.STRING,
+            
+        }
     });
 
     Project.associate = function (models) {
