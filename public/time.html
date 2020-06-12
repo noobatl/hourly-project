@@ -34,26 +34,16 @@
                 </div>  
             </div>
         </nav>
-        <div class="container">
+        <div class="container" id="list">
             <div class="row">
                 <h1>Track Time</h1><a class="add-team-member" data-toggle="modal" data-target="#addTeamMemberModal"><i class="fas fa-plus"></i> Add Time Entry</a>
-                <div class="task-time-container">
+                <div class="task-time-container" id="timeContainer">
                     <ul class="list-group list-group-horizontal list-headers">
-                        <li class="list-group-item"></li>
                         <li class="list-group-item">Project Name</li>
-                        <li class="list-group-item">Task Name</li>
-                        <li class="list-group-item">Hours</li>
-                        <li class="list-group-item">Notes</li>
+                        <li class="list-group-item ">Task Name</li>
+                        <li class="list-group-item ">Hours</li>
+                        <li class="list-group-item ">Notes</li>
                     </ul>
-                    <!-- Rows under header will be populated based on task assigned to the user -->
-                    <!-- Sample UL -->
-                    <!-- <ul class="list-group list-group-horizontal list-headers">
-                        <li class="list-group-item"><i class="fas fa-edit edit-time-entry"></i></li>
-                        <li class="list-group-item">Project Name</li>
-                        <li class="list-group-item">Task Name</li>
-                        <li class="list-group-item">Hours</li>
-                        <li class="list-group-item">Notes</li>
-                    </ul> -->
                 </div>
             </div>
         </div>
@@ -91,5 +81,8 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <script src="/assets/js/index.js"></script>
+
+        <!--<script type="text/javascript" src="/assets/js/index.js"></script>-->
+    <script type="text/javascript" src="../assets/js/time_Entry.js"></script>
     </body>
 </html>
