@@ -10,3 +10,16 @@ $(document).ready(function() {
     });
 
 })
+
+$("#timeModal").css("display", "none");
+
+$(document).ready(function() {
+    $("#timeModal").modal("hide");
+
+    // Stops modal from closing when clicked outside
+    $("#timeModal").modal({
+        backdrop: 'static',
+        keyboard: false
+    });
+
+})
