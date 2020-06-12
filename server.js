@@ -1,26 +1,28 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 8080;
+const session = require("express-session");
+const passport = require("./app/config/passport");
 
+const PORT = process.env.PORT || 8080;
 const db = require("./app/models")
 
 //Create files for each table in database -- UNCOMMENT AFTER DATABASE IS SET
 // const db = require("./app/models");
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(express.static("public"));
+// We need to use sessions to keep track of our user's login status
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
+//Routing for HTML
+require("./app/routes/html-routes")
 //Routing for API
 require("./app/routes/api-user")(app);
 require("./app/routes/api-project")(app);
 require("./app/routes/api-task")(app);
 //require("./routes/api-time")(app);
-
-//Routing for HTML
-require("./app/routes/html-routes")
-
 
 //Model has been setup
 db.sequelize.sync().then(function() {
@@ -28,4 +30,3 @@ db.sequelize.sync().then(function() {
     console.log("App listening on PORT " + PORT);
   });
 });
-
