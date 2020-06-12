@@ -1,8 +1,6 @@
 module.exports = function(sequelize, DataTypes){
 
     var TimeEntry = sequelize.define("TimeEntry",{
-<<<<<<< HEAD
-=======
 
         timeEntryId:{
             type: DataTypes.INTEGER,
@@ -10,7 +8,6 @@ module.exports = function(sequelize, DataTypes){
             primaryKey: true
         },
 
->>>>>>> origin
         date:{
             type: DataTypes.DATE
         }, 
