@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 //Routing for API
-require("./app/routes/api-project")(app);
+// require("./app/routes/api-project")(app);
 require("./app/routes/api-task")(app);
 require("./app/routes/api-user")(app);
 //require("./app/routes/api-time")(app);

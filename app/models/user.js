@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes){
         });
 
         User.belongsToMany(models.Project, {
-            through: 'UserProject'
+            through: 'UserProject',
         });
     }
 

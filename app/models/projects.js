@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
     var Project = sequelize.define("Project", {
 
-        projectId: {
+        ProjectId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
@@ -35,7 +35,8 @@ module.exports = function (sequelize, DataTypes) {
         });
 
         Project.belongsToMany(models.User, {
-            through: 'UserProject'
+            through: 'UserProject',
+            foreignKey: 'projectId'
         });
 
     }

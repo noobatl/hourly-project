@@ -13,7 +13,7 @@ module.exports = function (app) {
             
             taskName: req.body.title,
             taskDescription: req.body.description,
-            projectID: req.body.projectID,
+            projectId: req.body.projectID,
             assignedUserID: req.body.assignedUserID
 
         }).then(function (dbTask) {
