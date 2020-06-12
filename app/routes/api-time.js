@@ -2,8 +2,8 @@ const db = require("../models");
 
 module.exports = function (app) {
     app.get("/api/Time", function (req, res) {
-        db.Time.findAll({}).then(function (dbTime) {
-            res.json(dbTime)
+        db.TimeEntry.findAll({}).then(function (dbTimeEntry) {
+            res.json(dbTimeEntry)
         });
     });
 
