@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "yourRootPassword",
+=======
+    "password": "obomsa12",
+>>>>>>> f9ea209d5b9f5d51485905e9c6337fd846bc2f3c
     "database": "hourly_db",
     "host": "127.0.0.1",
     "dialect": "mysql",

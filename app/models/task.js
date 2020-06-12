@@ -11,12 +11,23 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             unique: true,
         },
+<<<<<<< HEAD
+=======
+
+        projectID: {
+            type: DataTypes.INTEGER,
+        },
+>>>>>>> f9ea209d5b9f5d51485905e9c6337fd846bc2f3c
         assignedUserID: {
             type: DataTypes.INTEGER,
         },
         taskDescription: {
             type: DataTypes.TEXT
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> f9ea209d5b9f5d51485905e9c6337fd846bc2f3c
     });
 
     Task.associate = function (models) {
