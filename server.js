@@ -1,5 +1,4 @@
 const express = require("express");
-
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -14,10 +13,10 @@ app.use(express.json());
 app.use(express.static("public"));
 
 //Routing for API
+require("./app/routes/api-user")(app);
 require("./app/routes/api-project")(app);
 require("./app/routes/api-task")(app);
-require("./app/routes/api-user")(app);
-//require("./app/routes/api-time")(app);
+//require("./routes/api-time")(app);
 
 //Routing for HTML
 require("./app/routes/html-routes")
