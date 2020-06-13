@@ -3,7 +3,7 @@ const db = require("../models");
 module.exports = function (app) {
     app.get("/api/Project", function (req, res) {
         db.Project.findAll({
-            // include: [db.Task]
+            include: [db.Task]
         }).then(function (dbProject) {
             res.json(dbProject)
         });
