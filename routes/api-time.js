@@ -5,13 +5,25 @@ module.exports = function (app) {
         db.TimeEntry.findAll({
             include: [{
                 model: db.Task,
-                include: [{
-                    model: db.Project
-                }]
+                model: db.Project
             }]
     
         }).then(function (dbTimeEntry) {
             res.json(dbTimeEntry)
+        });
+    });
+
+    app.get("/api/Time/:id", function(req,res) {
+        db.Time.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [{
+                model: db.Task,
+                model: db.Project
+            }]
+        }).then(function(dbTime){
+            res.json(dbTime)
         });
     });
 

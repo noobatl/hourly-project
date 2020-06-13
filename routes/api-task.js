@@ -7,6 +7,16 @@ module.exports = function (app) {
         });
     });
 
+    app.get("/api/Task/:id", function(req,res) {
+        db.Task.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbTask){
+            res.json(dbTask)
+        });
+    });
+
     app.post("/api/Task", function (req, res) {
 
         db.Task.create({
@@ -38,10 +48,11 @@ module.exports = function (app) {
     app.put("/api/task", function (req, res) {
         db.Task.update({
 
-            taskName: req.body.title,
-            taskDescription: req.body.description,
-            projectID: req.body.projectID,
-            assignedUserID: req.body.assignedUserID
+            taskName: req.body.taskName,
+            projectId: req.body.projectId,
+            assignedUserID: req.body.assignedUserID,
+            taskDescription: req.body.taskDescription,
+
 
         }, {
             where: {

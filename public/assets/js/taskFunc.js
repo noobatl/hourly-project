@@ -1,23 +1,23 @@
+// var Sequelize = require('sequelize');
+// var sequelize = new Sequelize('hourly_db', 'localhost', 'obomsa12');
+
 $(document).ready(function() {
   var memberSelect = $("#teamSelect");
   var projectSelect = $("#projectSelect");
   var members = [];
   var projects = [];
-  var tasks = [];
 
   var newTaskName = $("#newTaskName");
   var body = $("#description");
 
-  
-  // $(document).on("submit", taskForm, insertData);
-
+  // When saving, add new task to api and append to project
   $("#taskSave").on("click", function handleSave(event) {
     event.preventDefault();
 
     var newTask = {
       taskName: newTaskName.val().trim(),
-      projectId: parseInt(projectSelect.val()),
-      assignedUserID: parseInt(memberSelect.val()),
+      projectId: 2,
+      assignedUserID: 2,
       taskDescription: body.val(),
       UserUserId: 1,
     }
@@ -29,38 +29,9 @@ $(document).ready(function() {
     })
 
   })
-  // function insertData(event) {
-  //   event.preventDefault();
-  //   var task = {
-  //     taskName: newTaskName.val().trim(),
-  //     projectId: 1,
-  //     assignedUserID: 1,
-  //     taskDescription: body.val(),
-  //     UserUserId: 1,
-  //   }
-
-  //   $.post("/api/Task", task, getTasks);
-  //   newTaskName.val("");
-  //   body.val("");
-  //   $("#taskModal").modal("hide");
-  // }
-
-  // var url = window.location.search;
-  // var taskId;
-  // var memberId;
-  // var projectId;
-  // var bodyId;
-  // var updating = false;
 
   memberData();
   projectData();
-
-  // // get tasks
-  // function getTasks() {
-  //   $.get('/api/Task', function(data) {
-  //     tasks = data;
-  //   })
-  // }
 
   // Populate team members in dropdown menu
   function memberData () {
@@ -84,7 +55,6 @@ $(document).ready(function() {
     return newRow;
   };
   
-
 // Populate projects in dropdown
   function projectData () {
     $.get('/api/Project', function(data) {
