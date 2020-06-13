@@ -104,8 +104,8 @@ $(document).ready(function() {
       rowsToAdd.push(createMemberRow(data[i]));
     }
     memberSelect.empty();
-    console.log(rowsToAdd);
-    console.log(memberSelect);
+    //console.log(rowsToAdd);
+    //console.log(memberSelect);
     memberSelect.append(rowsToAdd);
     memberSelect.val(memberId);
   }
@@ -119,8 +119,8 @@ $(document).ready(function() {
       rowsToAdd.push(createProjectRow(data[i]));
     }
     projectSelect.empty();
-    console.log(rowsToAdd);
-    console.log(projectSelect);
+    //console.log(rowsToAdd);
+    //console.log(projectSelect);
     projectSelect.append(rowsToAdd);
     projectSelect.val(projectId);
   }

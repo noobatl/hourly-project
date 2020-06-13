@@ -1,11 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     var Project = sequelize.define("Project", {
 
-        projectId: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
         title: {
             type: DataTypes.STRING, 
             allowNull : false 
