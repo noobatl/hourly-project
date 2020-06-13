@@ -1,15 +1,15 @@
 $(document).ready(function () {
-console.log("entered")
+
 
 
     var projectSelect = $("#projectSelect");
-    
+    var taskSelect = $("#taskSelect");
+    var selectedProjectId;
+    var selectedTaskId;
+    var projectdata = [];
+    var taskData = [];
 
     // $(timeForm).on("submit", handleFormSubmit);
-//var projectId;
-    
-
-    // getTasks();
 
     // function handleFormSubmit(event) {
     //     event.preventDefault();
@@ -18,37 +18,71 @@ console.log("entered")
     //     }
 
     function getProjects() {
-        console.log("projects")
+        
         $.get("/api/Project", renderProjectList);
     }
 
-    // function getTasks(){
 
-    //     $.get("/api/Project", renderProjectList)
-    // }
     getProjects();
 
-    $('projectSelect').click(function () {        
+    
+    $('#projectSelect').click(function () {        
         $(this).change();  
-            
+        console.log("click")
     }).change (function () {
-        console.log($(this).val())
-        projectId = $(this).val()
+        selectedProjectId = parseInt($(this).val())
+        for (i =0; i<projectdata.length;i++) {
+            if (projectdata[i].projectId == selectedProjectId) {
+                console.log("selected")
+                taskData = projectdata[i].Tasks
+                rendertaskList(taskData)
+            }
+        }
     });      
-    function renderProjectList(data) {
+
+    $('#taskSelect').click(function(){
+        $(this).change();
+    }).change(function(){
+        selectedTaskId= parseInt($(this).val())
+        console.log("selected task id")
+        console.log(selectedTaskId)
+    });
+     
+     
+    // console.log(projectdata)
+
+    function rendertaskList(data) {
         console.log(data)
+
+       if (!data.length) {
+           return;
+       }
+
+       var tasksToAdd = [];
+       for (var i = 0; i < data.length; i++) {
+           
+        tasksToAdd.push(createTaskRow(data[i]));
+
+       }
+       taskSelect.empty();
+       taskSelect.append(tasksToAdd)
+    }
+
+    function renderProjectList(data) {
+         console.log(data)
+         projectdata = data;
+         
         if (!data.length) {
-            // window.location.href = "/home";
+            return;
         }
         var rowsToAdd = [];
         for (var i = 0; i < data.length; i++) {
+            
             rowsToAdd.push(createProjectRow(data[i]));
+
         }
         projectSelect.empty();
-        console.log(rowsToAdd);
-        console.log(projectSelect);
-        projectSelect.append(rowsToAdd);
-        // projectSelect.val(projectId);
+        projectSelect.append(rowsToAdd);    
     }
     function createProjectRow(project) {
         var listOption = $("<option>");
@@ -57,10 +91,13 @@ console.log("entered")
         return listOption;
     }
 
+    function createTaskRow(task){
+        var listOption = $("<option>");
+        listOption.attr("value", task.taskId);
+        listOption.text(task.taskName);
+        return listOption;
+    }
+
     
 
 })
-
-// $("#projectSelect").on("click change", function(e) {
-//     getProjects();
-// });
