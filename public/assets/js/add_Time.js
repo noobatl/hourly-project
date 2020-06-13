@@ -1,88 +1,96 @@
 $(document).ready(function () {
 
-
-
     var projectSelect = $("#projectSelect");
     var taskSelect = $("#taskSelect");
+    var newTimeEntryAmount = $("#newTimeEntryAmount")
+    var notesForNewTimeEntry = $("#notesForNewTimeEntry");
+    var newTimeEntryDate = $("#newTimeEntryDate")
+    var savebutton = $("#savebutton")
     var selectedProjectId;
     var selectedTaskId;
     var projectdata = [];
     var taskData = [];
 
-    // $(timeForm).on("submit", handleFormSubmit);
+    $(savebutton).on("click", handleFormSubmit);
 
-    // function handleFormSubmit(event) {
-    //     event.preventDefault();
-    //     if (!projectSelect.val() || !memberSelect.val()) {
-    //       return;
-    //     }
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        if (!Date() || !selectedTaskId || !newTimeEntryAmount.val() || !notesForNewTimeEntry.val()) {
+            return;
+        }
 
+        var timeEntry = {
+            date: Date(),
+            TaskTaskId: selectedTaskId,
+            timespent: parseInt(newTimeEntryAmount.val()),
+            notes: notesForNewTimeEntry.val()
+
+        }
+        submitTime(timeEntry)
+    }
+    function submitTime(time) {
+        $.post("/api/Time", time, function () {
+
+        })
+    }
     function getProjects() {
-        
+
         $.get("/api/Project", renderProjectList);
     }
 
+    newTimeEntryDate.attr("placeholder", Date());
 
     getProjects();
 
-    
-    $('#projectSelect').click(function () {        
-        $(this).change();  
-        console.log("click")
-    }).change (function () {
+    $('#projectSelect').click(function () {
+        $(this).change();
+    }).change(function () {
         selectedProjectId = parseInt($(this).val())
-        for (i =0; i<projectdata.length;i++) {
+        for (i = 0; i < projectdata.length; i++) {
             if (projectdata[i].projectId == selectedProjectId) {
                 console.log("selected")
                 taskData = projectdata[i].Tasks
                 rendertaskList(taskData)
             }
         }
-    });      
-
-    $('#taskSelect').click(function(){
-        $(this).change();
-    }).change(function(){
-        selectedTaskId= parseInt($(this).val())
-        console.log("selected task id")
-        console.log(selectedTaskId)
     });
-     
-     
-    // console.log(projectdata)
+
+    $('#taskSelect').click(function () {
+        $(this).change();
+    }).change(function () {
+        selectedTaskId = parseInt($(this).val())
+    });
 
     function rendertaskList(data) {
-        console.log(data)
+        if (!data.length) {
+            return;
+        }
 
-       if (!data.length) {
-           return;
-       }
+        var tasksToAdd = [];
+        for (var i = 0; i < data.length; i++) {
 
-       var tasksToAdd = [];
-       for (var i = 0; i < data.length; i++) {
-           
-        tasksToAdd.push(createTaskRow(data[i]));
+            tasksToAdd.push(createTaskRow(data[i]));
 
-       }
-       taskSelect.empty();
-       taskSelect.append(tasksToAdd)
+        }
+        taskSelect.empty();
+        taskSelect.append(tasksToAdd)
     }
 
     function renderProjectList(data) {
-         console.log(data)
-         projectdata = data;
-         
+        console.log(data)
+        projectdata = data;
+
         if (!data.length) {
             return;
         }
         var rowsToAdd = [];
         for (var i = 0; i < data.length; i++) {
-            
+
             rowsToAdd.push(createProjectRow(data[i]));
 
         }
         projectSelect.empty();
-        projectSelect.append(rowsToAdd);    
+        projectSelect.append(rowsToAdd);
     }
     function createProjectRow(project) {
         var listOption = $("<option>");
@@ -91,13 +99,11 @@ $(document).ready(function () {
         return listOption;
     }
 
-    function createTaskRow(task){
+    function createTaskRow(task) {
         var listOption = $("<option>");
         listOption.attr("value", task.taskId);
         listOption.text(task.taskName);
         return listOption;
     }
-
-    
 
 })

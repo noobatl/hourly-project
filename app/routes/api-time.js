@@ -17,9 +17,10 @@ module.exports = function (app) {
 
     app.post("/api/Time", function (req, res) {
 
-        db.Time.create({
+        db.TimeEntry.create({
 
             date: req.body.date,
+            TaskTaskId:req.body.TaskTaskId,
             timespent: req.body.timespent,
             notes: req.body.notes
 
@@ -30,7 +31,7 @@ module.exports = function (app) {
 
     app.delete("/api/Time/:id", function (req, res) {
 
-        db.Time.destroy({
+        db.TimeEntry.destroy({
             where: {
                 id: req.params.id
             }
@@ -41,7 +42,7 @@ module.exports = function (app) {
     });
 
     app.put("/api/Time", function (req, res) {
-        db.Time.update({
+        db.TimeEntry.update({
 
             date: req.body.date,
             timespent: req.body.timespent,
