@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes){
         role: {
             type:DataTypes.STRING,
              allowNull: false,
-             unique: true
+             unique: false
         },
         email: {
             type:DataTypes.STRING,
@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes){
         });
 
         User.belongsToMany(models.Project, {
-            through: 'UserProject'
+            through: 'UserProject',
         });
     }
 

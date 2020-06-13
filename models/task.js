@@ -11,6 +11,10 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             unique: true,
         },
+        projectId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         assignedUserID: {
             type: DataTypes.INTEGER,
         },
@@ -27,26 +31,15 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
         Task.belongsTo(models.User, {
-            foreignKey: {
-                allowNull: false
-            }
+            // foreignKey: {
+            //     allowNull: false
+            // }
         });
 
         Task.hasMany(models.TimeEntry, {
             onDelete: "cascade"
         });
     };
-
-    // Task.associate = function(models) {
-    //     Task.belongsTo(models.User, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    //     Task.hasMany(models.TimeEntry, {
-    //         onDelete: "cascade"
-    //     });
-    // }
 
     return Task;
 };
