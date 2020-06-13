@@ -55,7 +55,7 @@ $(document).ready(function () {
     let list = [];
 
     $(document).on("click", "button.delete", handleProjectDelete)
-
+    $(document).on("click", "button.edit", handleProjectEdit)
 
 
     function deleteProject(id) {
@@ -104,13 +104,23 @@ $(document).ready(function () {
         })
     }
 
+    function handleProjectEdit(){
+        let currentProject = $(this)
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+            .data("project")
+        window.location.href = "/add?project_id=" + currentProject.id;
+    }
+
     function handleProjectDelete() {
         let currentProject = $(this)
-        .parent()
-        .parent()
-        .parent()
-        .parent()
-        .data("project")
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+            .data("project")
         console.log(currentProject)
         deleteProject(currentProject.id)
     }

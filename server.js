@@ -20,7 +20,7 @@ require("./app/routes/api-user")(app);
 require("./app/routes/api-time")(app);
 
 //Routing for HTML
-require("./app/routes/html-routes")
+require("./app/routes/html-routes")(app);
 
 
 //Model has been setup

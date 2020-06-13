@@ -7,6 +7,16 @@ module.exports = function (app) {
         });
     });
 
+    app.get("/api/User/:id", function(req,res) {
+        db.User.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbUser){
+            res.json(dbUser)
+        });
+    });
+
     app.post("/api/User", function (req, res) {
 
         db.User.create({

@@ -7,6 +7,16 @@ module.exports = function (app) {
         });
     });
 
+    app.get("/api/Task/:id", function(req,res) {
+        db.Task.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbTask){
+            res.json(dbTask)
+        });
+    });
+
     app.post("/api/Task", function (req, res) {
 
         db.Task.create({
