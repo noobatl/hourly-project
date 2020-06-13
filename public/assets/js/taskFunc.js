@@ -1,14 +1,26 @@
 $(document).ready(function() {
-  var newTaskName = $("#newTaskName");
-  var taskForm = $("#task");
   var memberSelect = $("#teamSelect");
   var projectSelect = $("#projectSelect");
-  var body = $("#description");
   var members = [];
   var projects = [];
 
-  // on form submit, call function to handle
-  // $(taskForm).on("submit", handleFormSubmit(event));
+  var newTaskName = $("#newTaskName");
+  var taskForm = $("#task");
+  var body = $("#description");
+
+  
+  $(document).on("submit", "#taskForm", insertData);
+
+  function insertData(event) {
+    event.preventDefault();
+    var task = {
+      taskName: newTaskName.val().trim(),
+      member: memberSelect,
+      project: projectSelect,
+      description: body.val()
+    }
+  }
+
   // var url = window.location.search;
   // var taskId;
   // var memberId;
