@@ -3,23 +3,47 @@ $(document).ready(function() {
   var projectSelect = $("#projectSelect");
   var members = [];
   var projects = [];
+  var tasks = [];
 
   var newTaskName = $("#newTaskName");
-  var taskForm = $("#task");
   var body = $("#description");
 
   
-  $(document).on("submit", "#taskForm", insertData);
+  // $(document).on("submit", taskForm, insertData);
 
-  function insertData(event) {
+  $("#taskSave").on("click", function handleSave(event) {
     event.preventDefault();
-    var task = {
+
+    var newTask = {
       taskName: newTaskName.val().trim(),
-      member: memberSelect,
-      project: projectSelect,
-      description: body.val()
+      projectId: parseInt(projectSelect.val()),
+      assignedUserID: parseInt(memberSelect.val()),
+      taskDescription: body.val(),
+      UserUserId: 1,
     }
-  }
+
+    console.log(newTask);
+
+    $.post('/api/Task', newTask, function() {
+      $("#taskModal").modal("hide");
+    })
+
+  })
+  // function insertData(event) {
+  //   event.preventDefault();
+  //   var task = {
+  //     taskName: newTaskName.val().trim(),
+  //     projectId: 1,
+  //     assignedUserID: 1,
+  //     taskDescription: body.val(),
+  //     UserUserId: 1,
+  //   }
+
+  //   $.post("/api/Task", task, getTasks);
+  //   newTaskName.val("");
+  //   body.val("");
+  //   $("#taskModal").modal("hide");
+  // }
 
   // var url = window.location.search;
   // var taskId;
@@ -30,6 +54,13 @@ $(document).ready(function() {
 
   memberData();
   projectData();
+
+  // // get tasks
+  // function getTasks() {
+  //   $.get('/api/Task', function(data) {
+  //     tasks = data;
+  //   })
+  // }
 
   // Populate team members in dropdown menu
   function memberData () {

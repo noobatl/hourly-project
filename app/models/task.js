@@ -31,9 +31,9 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
         Task.belongsTo(models.User, {
-            foreignKey: {
-                allowNull: false
-            }
+            // foreignKey: {
+            //     allowNull: false
+            // }
         });
 
         Task.hasMany(models.TimeEntry, {

@@ -11,10 +11,11 @@ module.exports = function (app) {
 
         db.Task.create({
             
-            taskName: req.body.title,
-            taskDescription: req.body.description,
-            projectId: req.body.projectID,
-            assignedUserID: req.body.assignedUserID
+            taskName: req.body.taskName,
+            projectId: req.body.projectId,
+            assignedUserID: req.body.assignedUserID,
+            taskDescription: req.body.taskDescription,
+
 
         }).then(function (dbTask) {
             res.json(dbTask);
