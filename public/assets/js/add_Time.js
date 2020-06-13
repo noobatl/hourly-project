@@ -11,11 +11,15 @@ $(document).ready(function () {
     var projectdata = [];
     var taskData = [];
 
+    newTimeEntryAmount.keyup(function() {  
+        this.value = this.value.replace(/[^0-9\.]/g,''); 
+    });
+
     $(savebutton).on("click", handleFormSubmit);
 
     function handleFormSubmit(event) {
         event.preventDefault();
-        if (!Date() || !selectedTaskId || !newTimeEntryAmount.val() || !notesForNewTimeEntry.val()) {
+        if (!Date() || !selectedTaskId || !newTimeEntryAmount.val()) {
             return;
         }
 
@@ -30,7 +34,7 @@ $(document).ready(function () {
     }
     function submitTime(time) {
         $.post("/api/Time", time, function () {
-
+            $('#timeModal').modal('toggle');
         })
     }
     function getProjects() {
@@ -68,7 +72,11 @@ $(document).ready(function () {
 
         var tasksToAdd = [];
         for (var i = 0; i < data.length; i++) {
+            if(i === 0){
 
+                selectedTaskId = data[0].taskId
+            }
+        
             tasksToAdd.push(createTaskRow(data[i]));
 
         }
@@ -85,6 +93,11 @@ $(document).ready(function () {
         }
         var rowsToAdd = [];
         for (var i = 0; i < data.length; i++) {
+
+            if(i === 0){
+                
+                selectedProjectId = data[0].projectId
+            }
 
             rowsToAdd.push(createProjectRow(data[i]));
 
