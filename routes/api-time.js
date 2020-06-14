@@ -5,7 +5,9 @@ module.exports = function (app) {
         db.TimeEntry.findAll({
             include: [{
                 model: db.Task,
-                model: db.Project
+                include: [{
+                    model: db.Project
+                }]
             }]
     
         }).then(function (dbTimeEntry) {

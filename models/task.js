@@ -11,10 +11,12 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             unique: true,
         },
+
         project: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+
         assignedUserID: {
             type: DataTypes.INTEGER,
         },
