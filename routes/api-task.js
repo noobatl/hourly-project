@@ -2,7 +2,12 @@ const db = require("../models");
 
 module.exports = function (app) {
     app.get("/api/Task", function (req, res) {
-        db.Task.findAll({}).then(function (dbTask) {
+        db.Task.findAll({
+            include: [
+                db.Project,
+                db.User
+            ]
+        }).then(function (dbTask) {
             res.json(dbTask)
         });
     });
@@ -49,7 +54,7 @@ module.exports = function (app) {
         db.Task.update({
 
             taskName: req.body.taskName,
-            projectId: req.body.projectId,
+            ProjectId: req.body.ProjectId,
             assignedUserID: req.body.assignedUserID,
             taskDescription: req.body.taskDescription,
 

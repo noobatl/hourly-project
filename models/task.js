@@ -26,12 +26,12 @@ module.exports = function (sequelize, DataTypes) {
     Task.associate = function (models) {
 
         Task.belongsTo(models.Project, {
-            foreignKey: {
-                allowNull: false
-            }
+            foreignKey: 'ProjectId'
         });
         Task.belongsTo(models.User, {
-            // foreignKey: {
+            foreignKey: 'userId'
+            
+            // {
             //     allowNull: false
             // }
         });

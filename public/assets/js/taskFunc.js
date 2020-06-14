@@ -14,10 +14,20 @@ $(document).ready(function() {
   $("#taskSave").on("click", function handleSave(event) {
     event.preventDefault();
 
+    var actualID = projectSelect[0].selectedIndex;
+    actualID = actualID +1;
+    parseInt(actualID);
+
+    var userID = memberSelect[0].selectedIndex;
+    userID = userID +1;
+    parseInt(userID);
+    // window.alert(actualID);
+
     var newTask = {
       taskName: newTaskName.val().trim(),
-      projectId: 2,
-      assignedUserID: 2,
+      // hard coded project and user ids for now 
+      projectId: actualID,
+      assignedUserID: userID,
       taskDescription: body.val(),
       UserUserId: 1,
     }
