@@ -54,7 +54,7 @@ module.exports = function (app) {
         db.Task.update({
 
             taskName: req.body.taskName,
-            ProjectId: req.body.ProjectId,
+            projectId: req.body.projectId,
             assignedUserID: req.body.assignedUserID,
             taskDescription: req.body.taskDescription,
 

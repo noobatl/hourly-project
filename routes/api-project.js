@@ -2,35 +2,34 @@ const db = require("../models");
 
 module.exports = function (app) {
     app.get("/api/Project", function (req, res) {
+        let query = {};
+
+        if (req.query.project_id) {
+            query.projectId = req.query.project_id;
+        }
+
         db.Project.findAll({
+            where: query,
             include: [db.Task]
         }).then(function (dbProject) {
             res.json(dbProject)
         });
     });
 
-    app.get("/api/Project/:id", function(req,res) {
+    app.get("/api/Project/:id", function (req, res) {
         db.Project.findOne({
             where: {
-                id: req.params.id
+                projectId: req.params.id
             },
             include: [db.Task]
-        }).then(function(dbProject){
+        }).then(function (dbProject) {
             res.json(dbProject)
         });
     });
 
     app.post("/api/Project", function (req, res) {
-        
-        db.Project.create({
 
-            title: req.body.title,
-            budget: req.body.budget,
-            description: req.body.description,
-            team : req.body.team,
-            status: req.body.status
-
-        }).then(function (dbProject) {
+        db.Project.create(req.body).then(function (dbProject) {
             res.json(dbProject);
         });
     });
@@ -39,7 +38,7 @@ module.exports = function (app) {
 
         db.Project.destroy({
             where: {
-                id: req.params.id
+                projectId: req.params.id
             }
         }).then(function (dbProject) {
             res.json(dbProject);
@@ -48,20 +47,14 @@ module.exports = function (app) {
     });
 
     app.put("/api/Project", function (req, res) {
-        db.Project.update({
-
-            title: req.body.title,
-            budget: req.body.budget,
-            description: req.body.description,
-            team : req.body.team,
-            status: req.body.status
-
-        }, {
-            where: {
-                id: req.body.id
-            }
-        }).then(function (dbProject) {
-            res.json(dbProject);
-        });
+        db.Project.update(
+            req.body,
+            {
+                where: {
+                    projectId: req.body.id
+                }
+            }).then(function (dbProject) {
+                res.json(dbProject);
+            });
     });
 }

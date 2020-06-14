@@ -15,6 +15,7 @@ $(document).ready(function () {
         projectId = url.split("=")[1];
         getProjectData(projectId, "project");
       }
+    
 
     $("#projectSave").on("click", function handleSave(event) {
         event.preventDefault();
@@ -29,7 +30,8 @@ $(document).ready(function () {
             budget : budgetInput.val(),
             description : descriptionInput.val().trim(),
             team : teamMembers.val(),
-            status : statusInput.val()
+            status : statusInput.val(),
+            projectId : projectId         
         }
 
         if (updating) {
@@ -43,13 +45,14 @@ $(document).ready(function () {
     });
 
     function saveProject(project){
+
         $.post("/api/Project", project, function(){
             window.location.href = "/home"
         })
     }
 
     function getProjectData (id){
-        let queryUrl = "/api/Projects/" + id;
+        let queryUrl = "/api/Project/" + id;
 
         $.get(queryUrl, function(data) {
             titleInput.val(data.title)
@@ -57,13 +60,14 @@ $(document).ready(function () {
             budgetInput.val(data.budget)
             descriptionInput.val(data.description)
             statusInput.val(data.status)
-            projectId = data.id;
 
             updating = true;
         })
     }
 
     function updateProject (project) {
+
+        console.log(project)
         $.ajax({
             method: "PUT",
             url: "/api/Project",

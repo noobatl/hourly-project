@@ -52,10 +52,41 @@ $("#addMemberBtn").on("click", function () {
 //Get Projects
 $(document).ready(function () {
     const projectList = $("#projectList")
-    let list = [];
 
     $(document).on("click", "button.delete", handleProjectDelete)
     $(document).on("click", "button.edit", handleProjectEdit)
+
+    let url = window.location.search;
+    let projectId;
+    if (url.indexOf("?project_id=") !== -1) {
+        projectId = url.split("=")[1];
+        getProject(projectId)
+    }
+    else {
+        getProject();
+    }
+
+    function getProject(id) {
+        projectId = id || "";
+
+        if (projectId) {
+            projectId = "/?project_id=" + projectId
+        }
+        $.get("/api/Project" + projectId, function (data) {
+            if (!data || !data.length) {
+                displayEmpty();
+            }
+            else {
+                projectList.empty();
+                const projectsToAdd = [];
+                for (let i = 0; i < data.length; i++) {
+                    projectsToAdd.push(createRow(data[i]));
+                }
+
+                projectList.append(projectsToAdd)
+            }
+        })
+    }
 
 
     function deleteProject(id) {
@@ -73,7 +104,7 @@ $(document).ready(function () {
         let updatedLast = new Date(project.updatedAt);
         //updatedLast= moment(updatedLast).format("MMMM Do YYYY, h:mm:ss a");
 
-        let projectCard = projectList.append(
+        let projectCard = projectList.prepend(
             `<div class="card"><div class="card-header">
             <h3>${project.title}
             <button class="delete btn btn-danger" id="projectDelete"><i class="fas fa-trash delete-project"></i></button>
@@ -89,29 +120,24 @@ $(document).ready(function () {
 
         return projectCard;
     }
+    
+    function displayEmpty() {
+        
+        projectList.empty();
 
-    function getProject() {
-
-        $.get("/api/Project", function (data) {
-
-            projectList.empty();
-            const projectsToAdd = [];
-            for (let i = 0; i < data.length; i++) {
-                projectsToAdd.push(createRow(data[i]));
-            }
-
-            projectList.append(projectsToAdd)
-        })
+        projectList.append(`<p>You have no projects to display</p>`)
+        
     }
 
-    function handleProjectEdit(){
+    function handleProjectEdit() {
+
         let currentProject = $(this)
             .parent()
             .parent()
             .parent()
             .parent()
             .data("project")
-        window.location.href = "/add?project_id=" + currentProject.id;
+        window.location.href = "/add?project_id=" + currentProject.projectId;
     }
 
     function handleProjectDelete() {
@@ -122,7 +148,7 @@ $(document).ready(function () {
             .parent()
             .data("project")
         console.log(currentProject)
-        deleteProject(currentProject.id)
+        deleteProject(currentProject.projectId)
     }
 
 
