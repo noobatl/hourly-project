@@ -35,6 +35,7 @@ $(document).ready(function () {
     function submitTime(time) {
         $.post("/api/Time", time, function () {
             $('#timeModal').modal('toggle');
+            window.location.reload();
         })
     }
     function getProjects() {
