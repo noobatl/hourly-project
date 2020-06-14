@@ -106,11 +106,10 @@ $(document).ready(function () {
 
         let projectCard = projectList.prepend(
             `<div class="card"><div class="card-header">
-            <h3>${project.title}
+            <h4 class="col-md-6" id="projectTitle">${project.title}</h4>
             <button class="delete btn btn-danger" id="projectDelete"><i class="fas fa-trash delete-project"></i></button>
             <button class="edit btn btn-info" id="projectEdit"><i class="fas fa-edit edit-project"></i></button>
-            <h3>
-            </div>
+            </div></div>
             <p>${project.status}</p>
             <small>Created: ${formattedDate}</small>
             <small>Last Updated: ${updatedLast}</small>
