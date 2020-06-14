@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
     var Project = sequelize.define("Project", {
 
-        ProjectId: {
+        projectId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
