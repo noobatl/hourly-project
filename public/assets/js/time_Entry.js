@@ -17,10 +17,10 @@ $(document).ready(function () {
             console.log("deep")
             $("#timeContainer").append(`
             <ul class="list-group list-group-horizontal list-headers" id="listItems">
-                        <li class="list-group-item list-group-item-dark ">${project}</li>
-                        <li class="list-group-item list-group-item-dark ">${task}</li>
-                        <li class="list-group-item list-group-item-dark ">${timespent}</li>
-                        <li class="list-group-item list-group-item-dark ">${notes}</li>
+                        <li class="list-group-item ">${project}</li>
+                        <li class="list-group-item ">${task}</li>
+                        <li class="list-group-item ">${timespent}</li>
+                        <li class="list-group-item ">${notes}</li>
                     </ul>
             `)
         }

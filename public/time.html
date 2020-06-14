@@ -11,29 +11,31 @@
 
     </head>
     <body>
-        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/projects"><img src="/assets/img/hourly-logo.PNG" class="site-logo"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Projects </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="team-members.html">Team Members <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="time.html">Time <span class="sr-only">(current)</span></a>
-                    </li>
-                </ul>
-                <div class="form-inline my-2 my-lg-0">
-                    <a class="logout btn-primary" href="#">Logout</a>
-                </div>  
-            </div>
-        </nav>
+        <div class="container header">
+            <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="/projects"><img src="/assets/img/hourly-logo.PNG" class="site-logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/home">Projects <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/team">Team Members</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/time">Time</a>
+                        </li>
+                    </ul>
+                    <div class="form-inline my-2 my-lg-0">
+                        <a class="logout btn-primary" href="#">Logout</a>
+                    </div>  
+                </div>
+            </nav>
+        </div>
         <div class="container" id="list">
             <div class="row">
                 <h1>Track Time</h1><a class="add-team-member" data-toggle="modal" data-target="#addTeamMemberModal"><button id = "addTimeBtn"><i class="fas fa-plus"></i> Add Time Entry</a></button>
@@ -58,6 +60,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                       
                         <div class="form-group">
                             <input type="input" class="form-control" id="newTimeEntryDate" placeholder="Date">
                         </div>
@@ -85,10 +88,35 @@
                             <label for="notesForNewTimeEntry">Notes (optional)</label>
                             <textarea class="form-control" id="notesForNewTimeEntry" rows="5"></textarea>
                         </div>
+                        <div class="form-group" >
+                            <strong>Projects:</strong>
+                            <!-- Will have a dropdown of active projects. -->
+                            <select class="form-control" id="projectSelect">
+                                <!-- Sample Option -->
+                                <!-- <option class="time-entry-active-project"> Project Name</option> -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <strong>Task:</strong>
+                            <!-- Will have a dropdown of active task for the project selected. -->
+                            <select class="form-control" id ="taskSelect">
+                                <!-- Sample Option -->
+                                <!-- <option class="time-entry-active-project-task"> Task Name</option> -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <strong>Number of Hours Spent: </strong>
+                            <input type="input" class="form-control" id="newTimeEntryAmount">
+                        </div>
+                        <div class="form-group">
+                            <label for="notesForNewTimeEntry">Notes (optional)</label>
+                            <textarea class="form-control" id="notesForNewTimeEntry" rows="5"></textarea>
+                        </div>
+                    
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" id="savebutton">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -101,5 +129,6 @@
 
         <!--<script type="text/javascript" src="/assets/js/index.js"></script>-->
     <script type="text/javascript" src="../assets/js/time_Entry.js"></script>
+    <script type="text/javascript" src="../assets/js/add_Time.js"></script>
     </body>
 </html>
