@@ -122,13 +122,13 @@ $(document).ready(function () {
 
         return projectCard;
     }
-    
+
     function displayEmpty() {
-        
+
         projectList.empty();
 
         projectList.append(`<p>You have no projects to display</p>`)
-        
+
     }
 
     function handleProjectEdit() {
@@ -142,17 +142,22 @@ $(document).ready(function () {
     }
 
     function handleProjectDelete() {
-        let currentProject = $(this)
-            .parent().parent().parent().data("project")
-        console.log(currentProject)
-        deleteProject(currentProject.projectId)
+        let answer = window.confirm("Are you sure you would like to delete this project?")
+
+        if (answer) {
+            let currentProject = $(this)
+                .parent().parent().parent().data("project")
+            console.log(currentProject)
+            deleteProject(currentProject.projectId)
+        }
+        else { return; }
     }
-    
-    function projectDetails (display) {
+
+    function projectDetails(display) {
         $(".current-project-details").empty()
 
         let currentProject = $(this)
-        .parent().parent().parent().data("project")
+            .parent().parent().parent().data("project")
 
         $(".current-project-details").append(`
             <h3 class="selected-project">${currentProject.title}</h3>
@@ -162,8 +167,8 @@ $(document).ready(function () {
             <p><strong>Description:</strong></p>
             <p class="current-project-desc"> ${currentProject.description}</p>
         `)
-    
-        
+
+
     }
 
 
