@@ -8,3 +8,33 @@ h1,h2,h3,h4,h5,h6{
 #projectEdit{
     float: right;
 }
+
+.site-logo{
+    max-width: 200px;
+}
+
+.container{
+    padding-top: 40px;
+}
+
+.header.container{
+    border-bottom: 2px solid #080b4d;
+}
+
+.nav-item{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-item.active{
+    text-decoration: underline;
+}
+
+.logout{
+    background: #080b4d;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid gold;
+    text-transform: uppercase;
+    font-size: 10px;
+}
