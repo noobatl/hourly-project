@@ -1,6 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
     var Project = sequelize.define("Project", {
 
+        ProjectId: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
         title: {
             type: DataTypes.STRING, 
             allowNull : false 
@@ -30,7 +35,8 @@ module.exports = function (sequelize, DataTypes) {
         });
 
         Project.belongsToMany(models.User, {
-            through: 'UserProject'
+            through: 'UserProject',
+            foreignKey: 'projectId'
         });
 
     }

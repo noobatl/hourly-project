@@ -21,10 +21,11 @@ module.exports = function (app) {
 
         db.Task.create({
             
-            taskName: req.body.title,
-            taskDescription: req.body.description,
-            projectID: req.body.projectID,
-            assignedUserID: req.body.assignedUserID
+            taskName: req.body.taskName,
+            projectId: req.body.projectId,
+            assignedUserID: req.body.assignedUserID,
+            taskDescription: req.body.taskDescription,
+
 
         }).then(function (dbTask) {
             res.json(dbTask);
@@ -47,10 +48,11 @@ module.exports = function (app) {
     app.put("/api/task", function (req, res) {
         db.Task.update({
 
-            taskName: req.body.title,
-            taskDescription: req.body.description,
-            projectID: req.body.projectID,
-            assignedUserID: req.body.assignedUserID
+            taskName: req.body.taskName,
+            projectId: req.body.projectId,
+            assignedUserID: req.body.assignedUserID,
+            taskDescription: req.body.taskDescription,
+
 
         }, {
             where: {
