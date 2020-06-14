@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+    console.log("go to timeEntry")
+
     function getTime() {
         $.get("/api/Time", function (data) {
             renderdata(data);
@@ -14,7 +17,6 @@ $(document).ready(function () {
             var task = data[i].Task.taskName;
             var timespent = data[i].timespent;
             var notes = data[i].notes;
-            console.log("deep")
             $("#timeContainer").append(`
             <ul class="list-group list-group-horizontal list-headers" id="listItems">
                         <li class="list-group-item ">${project}</li>
