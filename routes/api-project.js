@@ -9,6 +9,17 @@ module.exports = function (app) {
         });
     });
 
+    app.get("/api/Project/:id", function(req,res) {
+        db.Project.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [db.Task]
+        }).then(function(dbProject){
+            res.json(dbProject)
+        });
+    });
+
     app.post("/api/Project", function (req, res) {
         
         db.Project.create({
