@@ -30,11 +30,12 @@ h1,h2,h3,h4,h5,h6{
     text-decoration: underline;
 }
 
-.logout{
+.logout, button{
     background: #080b4d;
     padding: 5px 10px;
     border-radius: 5px;
     border: 1px solid gold;
     text-transform: uppercase;
     font-size: 10px;
+    color:#fff;
 }
