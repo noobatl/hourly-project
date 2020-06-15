@@ -53,8 +53,8 @@ $("#addMemberBtn").on("click", function () {
 $(document).ready(function () {
     const projectList = $("#projectList")
 
-    $(document).on("click", "#buttonDelete", handleProjectDelete)
-    $(document).on("click", "#buttonEdit", handleProjectEdit)
+    $(document).on("click", "#projectDelete", handleProjectDelete)
+    $(document).on("click", "#projectEdit", handleProjectEdit)
     $(document).on("click", "#projectTitle", projectDetails)
 
     let url = window.location.search;
@@ -89,6 +89,31 @@ $(document).ready(function () {
 
             }
         })
+    }
+
+    
+    function getTasks (id) {
+        console.log(id)
+        $.get("api/Task", function (data) { 
+            let filteredTasks = data.filter(function(tasks){
+                
+                return tasks.projectId == id;
+            })
+
+            $("#task-display").empty()
+
+            filteredTasks.forEach(task => {
+                $("#task-display").prepend(`
+                <div class = "col-md-3"><div class = "card" id ="taskCard">
+                <div class = "card-header" id = "task-header"><h5 style="color:white;">${task.taskName}</h5></div>
+                <strong>Assigned to: FIX ME WITH USER!!</strong>
+                <small><details><p>${task.taskDescription}</p>
+                <p>Created on: ${task.createdAt}</p>
+                </div></div></details></small> <br>
+                `)
+            });
+         })                   
+        
     }
 
 
@@ -143,6 +168,7 @@ $(document).ready(function () {
             .parent()
             .parent()
             .data("project")
+        console.log(currentProject)
         window.location.href = "/add?project_id=" + currentProject.projectId;
     }
 
@@ -176,6 +202,7 @@ $(document).ready(function () {
         getTasks(currentProject.projectId)
 
     }
+
 
 
     getProject();

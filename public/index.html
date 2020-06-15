@@ -1,65 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hourly - Task Management System</title>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-        <link rel="stylesheet" href="assets/css/style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hourly - Task Management System</title>
 
-    </head>
-    <body>
-        <div class="container header">
-            <nav class="navbar sticky-top navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="/projects"><img src="/assets/img/hourly-logo.PNG" class="site-logo"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/home">Projects <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/team">Team Members</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/time">Time</a>
-                        </li>
-                    </ul>
-                    <div class="form-inline my-2 my-lg-0">
-                        <a class="logout btn-primary" href="#">Logout</a>
-                    </div>  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+    <div class="container header">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="/projects"><img src="/assets/img/hourly-logo.PNG" class="site-logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/home">Projects <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/team">Team Members</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/time">Time</a>
+                    </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0">
+                    <a class="logout btn-primary" href="#">Logout</a>
                 </div>
-            </nav>
-        </div>
-        
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 project-list-wrapper">
-                    <h2>Projects</h2>
-                    <div class="list-of-projects" id = "projectList">
-                        <!--List of projects shodivd be generated using the number of projects in the projects table.-->
-                        <!--Sample LI-->
-                        <!-- <li class="project-1">Project 1</li> -->
+            </div>
+        </nav>
+    </div>
 
-                    </div>
-                    <br>
-                    <p class="add-project"><a href="/add"><i class="fas fa-plus"></i> Add Project</a></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 project-list-wrapper">
+                <h2>Projects</h2>
+                <div class="list-of-projects" id="projectList">
+                    <!--List of projects shodivd be generated using the number of projects in the projects table.-->
+                    <!--Sample LI-->
+                    <!-- <li class="project-1">Project 1</li> -->
+
                 </div>
-                <div class="col project-details-wrapper">
-                    <h2>Project Details</h2>
-                    <div class="current-project-details">
-                        <p>Please select a project from the list</p>
+                <br>
+                <p class="add-project"><a href="/add"><i class="fas fa-plus"></i> Add Project</a></p>
+            </div>
+            <div class="col project-details-wrapper">
+                <h2>Project Details</h2>
+                <div class="current-project-details">
+                    <p>Please select a project from the list</p>
 
-                        <div class="current-project-task">
-                            <ul class="list-of-project-task" id="appendTask">
-                                <!--List of task should be queried from the task table based on the project selected-->
-                                <!--Sample LI-->
-                                <!-- <li class="task-item">
+                    <div class="current-project-task">
+                        <ul class="list-of-project-task" id="appendTask">
+                            <!--List of task should be queried from the task table based on the project selected-->
+                            <!--Sample LI-->
+                            <!-- <li class="task-item">
                                     <p>
                                         <input type="checkbox" class="completed-task">
                                         <span class="task-title">Will be populated from task table</span><br/>
@@ -67,69 +71,80 @@
                                         <strong>Due:</strong><span class="task-due-date">Will be populated from the task table</span>
                                     </p>
                                 </li> -->
-                            </ul>
-                        </div>
+                        </ul>
                     </div>
-                    <button class="add-task" id="addTaskBtn" data-toggle="modal" data-target="#taskModal"><i class="fas fa-plus"></i> Add Task</button>
                 </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class = "col-lg-12">
-                    <h2>Tasks</h2>
-                </div>
+                <button class="add-task" id="addTaskBtn" data-toggle="modal" data-target="#taskModal"><i
+                        class="fas fa-plus"></i> Add Task</button>
             </div>
         </div>
-        <!-- Vertically centered modal : Add New Task-->
-        <div class="modal hide" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Add New Task</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <br>
+        <div class="container">
+            <div class="row">
+                <h2>Tasks</h2>
+                <br>
+                <div class="col-lg-12" id="task-display"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- Vertically centered modal : Add New Task-->
+    <div class="modal hide" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Add New Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="task" method="POST">
-                            <div class="form-group">
-                                <input type="input" class="form-control" id="newTaskName" placeholder="Task Name">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect2">Assigned Project:</label>
-                                <select class="form-control" id="projectSelect">
-                                    <!-- Options will be loaded based on active projects -->
-                                    <!-- Sample Option -->
-                                    <!-- <option>Project Name</option> -->
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Assigned Team Member:</label>
-                                <select class="form-control custom-select" id="teamSelect">
-                                    <!-- Options will be loaded based on active members -->
-                                    <!-- Sample Option -->
-                                    <!-- <option>Team Member Name</option> -->
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="newTaskNotes">Description</label>
-                                <textarea class="form-control" id="description" rows="4"></textarea>
-                                <button type="submit" class="btn btn-primary" id="taskSave">Save changes</button>
-                            </div>
-                        </form>
-                        
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
-                    </div>
+                    </button>
                 </div>
+                <div class="modal-body">
+                    <form id="task" method="POST">
+                        <div class="form-group">
+                            <input type="input" class="form-control" id="newTaskName" placeholder="Task Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect2">Assigned Project:</label>
+                            <select class="form-control" id="projectSelect">
+                                <!-- Options will be loaded based on active projects -->
+                                <!-- Sample Option -->
+                                <!-- <option>Project Name</option> -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Assigned Team Member:</label>
+                            <select class="form-control custom-select" id="teamSelect">
+                                <!-- Options will be loaded based on active members -->
+                                <!-- Sample Option -->
+                                <!-- <option>Team Member Name</option> -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="newTaskNotes">Description</label>
+                            <textarea class="form-control" id="description" rows="4"></textarea>
+                            <button type="submit" class="btn btn-primary" id="taskSave">Save changes</button>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
         <script src="/assets/js/taskFunc.js"></script>
         <script src="/assets/js/index.js"></script>
-    </body>
+</body>
+
 </html>

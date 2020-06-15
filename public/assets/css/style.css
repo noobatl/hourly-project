@@ -23,7 +23,7 @@ h1,h2,h3,h4,h5,h6{
     text-decoration: underline;
 }
 
-.logout, button, #projectEdit, #projectDelete{
+.logout, button, #projectEdit, #projectDelete, #task-header{
     background: #080b4d;
     padding: 5px 10px;
     border-radius: 5px;
@@ -41,4 +41,7 @@ h1,h2,h3,h4,h5,h6{
 }
 #projectTitle{
     float: left;
+}
+#taskCard{
+    text-align: center;
 }
