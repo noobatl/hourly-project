@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
     Task.associate = function (models) {
 
         Task.belongsTo(models.Project, {
-            foreignKey: 'ProjectId'
+            foreignKey: 'projectId'
         });
         Task.belongsTo(models.User, {
             foreignKey: 'userId'
