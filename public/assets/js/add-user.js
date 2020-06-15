@@ -32,6 +32,8 @@ $(document).ready(function () {
       userData.role,
       userData.email
     );
+
+    
   });
   function addUser(firstname, lastname, role, email) {
     $.post("/api/user", {
