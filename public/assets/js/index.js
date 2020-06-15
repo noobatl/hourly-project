@@ -55,6 +55,7 @@ $(document).ready(function () {
 
     $(document).on("click", "button.delete", handleProjectDelete)
     $(document).on("click", "button.edit", handleProjectEdit)
+    $(document).on("click", "#projectTitle", projectDetails)
 
     let url = window.location.search;
     let projectId;
@@ -73,6 +74,7 @@ $(document).ready(function () {
             projectId = "/?project_id=" + projectId
         }
         $.get("/api/Project" + projectId, function (data) {
+
             if (!data || !data.length) {
                 displayEmpty();
             }
@@ -84,6 +86,7 @@ $(document).ready(function () {
                 }
 
                 projectList.append(projectsToAdd)
+
             }
         })
     }
@@ -106,14 +109,13 @@ $(document).ready(function () {
 
         let projectCard = projectList.prepend(
             `<div class="card"><div class="card-header">
-            <h3>${project.title}
-            <button class="delete btn btn-danger" id="projectDelete"><i class="fas fa-trash delete-project"></i></button>
+            <h3 id="projectTitle"><a href="#">${project.title}</a></h3><button class="delete btn btn-danger" id="projectDelete"><i class="fas fa-trash delete-project"></i></button>
             <button class="edit btn btn-info" id="projectEdit"><i class="fas fa-edit edit-project"></i></button>
             <h3>
             </div>
-            <p>${project.status}</p>
+            <details><p>${project.status}</p>
             <small>Created: ${formattedDate}</small>
-            <small>Last Updated: ${updatedLast}</small>
+            <small>Last Updated: ${updatedLast}</small></details>
             </div>`
         )
         projectCard.data("project", project)
@@ -135,20 +137,33 @@ $(document).ready(function () {
             .parent()
             .parent()
             .parent()
-            .parent()
             .data("project")
         window.location.href = "/add?project_id=" + currentProject.projectId;
     }
 
     function handleProjectDelete() {
         let currentProject = $(this)
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .data("project")
+            .parent().parent().parent().data("project")
         console.log(currentProject)
         deleteProject(currentProject.projectId)
+    }
+    
+    function projectDetails (display) {
+        $(".current-project-details").empty()
+
+        let currentProject = $(this)
+        .parent().parent().parent().data("project")
+
+        $(".current-project-details").append(`
+            <h3 class="selected-project">${currentProject.title}</h3>
+            <p class="project-status"><strong>Status: ${currentProject.status}</strong><span class="current-project-status"></span></p>
+            <p class="project-assignees"><strong>Assignees: ${currentProject.team}</strong><span class="current-project-assignees"></span></p>
+            <p class="project-budget"><strong>Budget: $${currentProject.budget}</strong><span class="current-project-budget"></span></p>
+            <p><strong>Description:</strong></p>
+            <p class="current-project-desc"> ${currentProject.description}</p>
+        `)
+    
+        
     }
 
 
