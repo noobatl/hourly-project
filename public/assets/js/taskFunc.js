@@ -25,7 +25,6 @@ $(document).ready(function() {
 
     var newTask = {
       taskName: newTaskName.val().trim(),
-      // hard coded project and user ids for now 
       projectId: actualID,
       assignedUserID: userID,
       taskDescription: body.val(),

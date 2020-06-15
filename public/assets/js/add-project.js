@@ -5,10 +5,34 @@ $(document).ready(function () {
     const budgetInput = $("#addProjectBudget");
     const descriptionInput = $("#addProjectDesc")
     const statusInput = $("#addProjectStatus");
+    var memberSelect = $("#addProjectTeamMembers")
 
     let url = window.location.search;
     let projectId;
     let updating = false;
+
+    memberData();
+
+    function memberData () {
+        $.get('/api/User', function(data) {
+          members = data;
+          fillArea();
+        });
+      }
+
+    function fillArea () {
+    memberSelect.empty();
+    var rowsToAdd = [];
+    for (var i = 0; i<members.length; i++) {
+        rowsToAdd.push(createNewRow(members[i]));
+    }
+    memberSelect.prepend(rowsToAdd);
+    }
+
+    function createNewRow(member) {
+        var newRow = `<option>${member.firstname} ${member.lastname}</option>`
+        return newRow;
+      };
 
     
     if (url.indexOf("?project_id=") !== -1) {
