@@ -60,7 +60,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                       
+                    <form>
                         <div class="form-group">
                             <input type="input" class="form-control" id="newTimeEntryDate" placeholder="Date">
                         </div>
@@ -90,12 +90,12 @@
                             <label for="notesForNewTimeEntry">Notes (optional)</label>
                             <textarea class="form-control" id="notesForNewTimeEntry" rows="5"></textarea>
                         </div>
-                       
+                        <button type="submit" class="btn btn-primary" id="savebutton">Save changes</button>
+                    </form>
                     
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="savebutton">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -105,9 +105,7 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <script src="/assets/js/index.js"></script>
-
-        <!--<script type="text/javascript" src="/assets/js/index.js"></script>-->
-    <script type="text/javascript" src="../assets/js/time_Entry.js"></script>
-    <script type="text/javascript" src="../assets/js/add_Time.js"></script>
+        <script src="../assets/js/time_Entry.js"></script>
+        <script src="../assets/js/add_Time.js"></script>
     </body>
 </html>

@@ -162,7 +162,6 @@ $(document).ready(function () {
             }
         }
         let currentProject = projectInfo[selectedProject];
-        //.parent().data("project")
 
         $(".current-project-details").append(`
             <h3 class="selected-project">${currentProject.title}</h3>
@@ -175,6 +174,7 @@ $(document).ready(function () {
         getTasks(currentProject.projectId);
     }
     var tasks;
+    var name;
 
     function getTasks(id) {
         $.when(
@@ -189,7 +189,7 @@ $(document).ready(function () {
                         <p>
                             <input type="checkbox" class="completed-task">
                             <span class="task-title">${tasks[i].taskName}</span><br/>
-                            <strong>Assigned to:</strong><span class="task-assignee">${tasks[i].assignedUserID}</span><br/>
+                            <strong>Assigned to: </strong><span class="task-assignee">${tasks[i].User.firstname} ${tasks[i].User.lastname}</span><br/>
                         </p>
                     </li>
                     `)
