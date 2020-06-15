@@ -109,14 +109,18 @@ $(document).ready(function () {
 
         let projectCard = projectList.prepend(
             `<div class="card"><div class="card-header">
-            <h3 id="projectTitle"><a href="#">${project.title}</a></h3><button class="delete btn btn-danger" id="projectDelete"><i class="fas fa-trash delete-project"></i></button>
+            <div class = "row">
+            <h3 class="col-md-9" id="projectTitle"><a href="#">${project.title}</a></h3>
             <button class="edit btn btn-info" id="projectEdit"><i class="fas fa-edit edit-project"></i></button>
-            <h3>
+            <button class="delete btn btn-danger" id="projectDelete"><i class="fas fa-trash delete-project"></i></button>
             </div>
-            <details><p>${project.status}</p>
+            <div class= "row">
+            <details class = "col-md-12"><p>${project.status}</p>
             <small>Created: ${formattedDate}</small>
-            <small>Last Updated: ${updatedLast}</small></details>
+            <small>Last Updated: ${updatedLast}</small></details></div>
+            </div>
             </div>`
+            
         )
         projectCard.data("project", project)
 
@@ -137,6 +141,7 @@ $(document).ready(function () {
             .parent()
             .parent()
             .parent()
+            .parent()
             .data("project")
         window.location.href = "/add?project_id=" + currentProject.projectId;
     }
@@ -146,7 +151,7 @@ $(document).ready(function () {
 
         if (answer) {
             let currentProject = $(this)
-                .parent().parent().parent().data("project")
+                .parent().parent().parent().parent().data("project")
             console.log(currentProject)
             deleteProject(currentProject.projectId)
         }
@@ -157,7 +162,7 @@ $(document).ready(function () {
         $(".current-project-details").empty()
 
         let currentProject = $(this)
-            .parent().parent().parent().data("project")
+            .parent().parent().parent().parent().data("project")
 
         $(".current-project-details").append(`
             <h3 class="selected-project">${currentProject.title}</h3>
