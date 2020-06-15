@@ -1,50 +1,36 @@
-// var Sequelize = require('sequelize');
-// var sequelize = new Sequelize('hourly_db', 'localhost', 'obomsa12');
-
 $(document).ready(function() {
   var memberSelect = $("#teamSelect");
   var projectSelect = $("#projectSelect");
   var members = [];
   var projects = [];
+  let taskProjectId;
+  let queryUrl;
 
   var newTaskName = $("#newTaskName");
   var body = $("#description");
 
   // When saving, add new task to api and append to project
-  $("#taskSave").on("click", function handleSave(event) {
+  $("#taskSave").on("click", function (event) {
     event.preventDefault();
 
     var actualID = projectSelect[0].selectedIndex;
     actualID = actualID +1;
     parseInt(actualID);
 
-    var userID = memberSelect[0].selectedIndex;
-    userID = userID +1;
-    parseInt(userID);
-    // window.alert(actualID);
+    var actualUserID = memberSelect[0].selectedIndex;
+    actualUserID = actualUserID +1;
+    parseInt(actualUserID);
+    window.alert(actualUserID);
 
     var newTask = {
       taskName: newTaskName.val().trim(),
       projectId: actualID,
-      assignedUserID: userID,
+      userId: actualUserID,
       taskDescription: body.val(),
-      UserUserId: 1,
+      // UserUserId: 1,
     }
 
     console.log(newTask);
-
-    // var taskAppend = ` 
-    // <li class="task-item">
-    //   <p>
-    //       <input type="checkbox" class="completed-task">
-    //       <span class="task-title">${newTask.taskName}</span><br/>
-    //       <strong>Assigned to: </strong><span class="task-assignee">${memberSelect.val()}</span><br/>
-    //   </p>
-    // </li>
-    
-    //   `
-
-    //   $("#appendTask").prepend(taskAppend);
 
     $.post('/api/Task', newTask, function() {
       $("#taskModal").modal("hide");
@@ -82,6 +68,7 @@ $(document).ready(function() {
   function projectData () {
     $.get('/api/Project', function(data) {
       projects = data;
+    
       fillProjectDropdown();
     });
   }

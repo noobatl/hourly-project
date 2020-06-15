@@ -62,11 +62,13 @@ $(document).ready(function () {
     let projectId;
     if (url.indexOf("?project_id=") !== -1) {
         projectId = url.split("=")[1];
-        getProject(projectId)
+        getProject(projectId);
     }
     else {
         getProject();
     }
+
+    var tasks;
 
     function getProject(id) {
         projectId = id || "";
@@ -92,6 +94,20 @@ $(document).ready(function () {
         })
     }
 
+
+    // function appendTasks(tasks) {
+    //     for (var i = 0; i < tasks.length; i++) {
+    //         $(".current-project-details").append(`
+    //         <li class="task-item">
+    //             <p>
+    //                 <input type="checkbox" class="completed-task">
+    //                 <span class="task-title">${tasks[i].taskName}</span><br/>
+    //                 <strong>Assigned to:</strong><span class="task-assignee">${tasks[i].assignedUserID}</span><br/>
+    //             </p>
+    //         </li>
+    //         `)
+    //     }
+    // }
 
     function deleteProject(id) {
         $.ajax({
@@ -122,6 +138,7 @@ $(document).ready(function () {
         projectCard.data("project", project)
 
         return projectCard;
+
     }
     
     function displayEmpty() {
@@ -163,7 +180,6 @@ $(document).ready(function () {
             <p><strong>Description:</strong></p>
             <p class="current-project-desc"> ${currentProject.description}</p>
         `)
-    
         
     }
 

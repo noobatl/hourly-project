@@ -11,9 +11,6 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             unique: true,
         },
-        assignedUserID: {
-            type: DataTypes.INTEGER,
-        },
         taskDescription: {
             type: DataTypes.TEXT
         }
