@@ -159,7 +159,6 @@ $(document).ready(function () {
             if(projectInfo[i].title == selectedProject){
                 selectedProject = projectInfo[i].projectId;
                 selectedProject = selectedProject - 1;
-                return;
             }
         }
         let currentProject = projectInfo[selectedProject];
