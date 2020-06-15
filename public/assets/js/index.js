@@ -157,9 +157,9 @@ $(document).ready(function () {
 
         $(".current-project-details").append(`
             <h3 class="selected-project">${currentProject.title}</h3>
-            <p class="project-status"><strong>Status: ${currentProject.status}</strong><span class="current-project-status"></span></p>
-            <p class="project-assignees"><strong>Assignees: ${currentProject.team}</strong><span class="current-project-assignees"></span></p>
-            <p class="project-budget"><strong>Budget (in hours): ${currentProject.budget}</strong><span class="current-project-budget"></span></p>
+            <p class="project-status"><strong>Status: </strong><span class="current-project-status">${currentProject.status}</span></p>
+            <p class="project-assignees"><strong>Assignees: </strong><span class="current-project-assignees">${currentProject.team}</span></p>
+            <p class="project-budget"><strong>Budget (in hours): </strong><span class="current-project-budget">${currentProject.budget}</span></p>
             <p><strong>Description:</strong></p>
             <p class="current-project-desc"> ${currentProject.description}</p>
         `)
