@@ -53,8 +53,9 @@ $(document).ready(function() {
 
   })
 
-  memberData();
   projectData();
+  memberData();
+
 
   // Populate team members in dropdown menu
   function memberData () {
