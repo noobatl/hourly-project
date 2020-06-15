@@ -51,6 +51,7 @@ $("#addMemberBtn").on("click", function () {
 
 //Get Projects
 $(document).ready(function () {
+
     const projectList = $("#projectList")
 
     $(document).on("click", "button.delete", handleProjectDelete)
@@ -158,7 +159,7 @@ $(document).ready(function () {
             <h3 class="selected-project">${currentProject.title}</h3>
             <p class="project-status"><strong>Status: ${currentProject.status}</strong><span class="current-project-status"></span></p>
             <p class="project-assignees"><strong>Assignees: ${currentProject.team}</strong><span class="current-project-assignees"></span></p>
-            <p class="project-budget"><strong>Budget: $${currentProject.budget}</strong><span class="current-project-budget"></span></p>
+            <p class="project-budget"><strong>Budget (in hours): ${currentProject.budget}</strong><span class="current-project-budget"></span></p>
             <p><strong>Description:</strong></p>
             <p class="current-project-desc"> ${currentProject.description}</p>
         `)

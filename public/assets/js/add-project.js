@@ -92,7 +92,7 @@ $(document).ready(function () {
 
         console.log(project)
         $.ajax({
-            method: "PUT",
+            method: "POST",
             url: "/api/Project",
             data: project
         }).then(function(){
