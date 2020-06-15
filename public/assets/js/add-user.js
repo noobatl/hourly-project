@@ -8,21 +8,13 @@ $(document).ready(function () {
   // When the signup button is clicked, we validate the email and password are not blank
   userForm.on("submit", function (event) {
     event.preventDefault();
+    
     var userData = {
       firstname: firstNameInput.val().trim(),
       lastname: lastNameInput.val().trim(),
       role: roleInput.val().trim(),
       email: emailInput.val().trim(),
     };
-
-    $("#teamContainer").append(`
-    <div class="card">
-      <div class="card-body">
-          <p class="team-member">${userData.firstname}</p>
-          <p class="team-member-title">${userData.role}</p>
-      </div>
-    </div>
-    `)
 
     if (
       !userData.firstname ||
@@ -57,4 +49,5 @@ $(document).ready(function () {
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
   }
+
 });
