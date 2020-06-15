@@ -114,12 +114,7 @@ $(document).ready(function () {
             `<div class="card" id="${project.title}"><div class="card-header">
             <h3 id="projectTitle"><a href="#">${project.title}</a></h3><button class="delete btn btn-danger" id="projectDelete"><i class="fas fa-trash delete-project"></i></button>
             <button class="edit btn btn-info" id="projectEdit"><i class="fas fa-edit edit-project"></i></button>
-            <h3>
-            </div>
-            <details><p>${project.status}</p>
-            <small>Created: ${formattedDate}</small>
-            <small>Last Updated: ${updatedLast}</small></details>
-            </div>`
+            `
         )
         projectCard.data("project", project)
 

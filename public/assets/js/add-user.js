@@ -14,6 +14,16 @@ $(document).ready(function () {
       role: roleInput.val().trim(),
       email: emailInput.val().trim(),
     };
+
+    $("#teamContainer").append(`
+    <div class="card">
+      <div class="card-body">
+          <p class="team-member">${userData.firstname}</p>
+          <p class="team-member-title">${userData.role}</p>
+      </div>
+    </div>
+    `)
+
     if (
       !userData.firstname ||
       !userData.lastname ||
@@ -22,6 +32,7 @@ $(document).ready(function () {
     ) {
       return;
     }
+
     // If we have an email and password, run the newUser function
     addUser(
       userData.firstname,
@@ -38,7 +49,7 @@ $(document).ready(function () {
       email: email,
     })
       .then(function (data) {
-        window.location.replace("/home");
+        window.location.replace("/team");
       })
       .catch(handleLoginErr);
   }
