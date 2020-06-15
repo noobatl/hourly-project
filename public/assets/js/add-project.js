@@ -1,11 +1,10 @@
 //Creating a new project
 $(document).ready(function () {
     const titleInput = $("#addProjectName");
-    const teamMembers = $("#addProjectTeamMembers");
     const budgetInput = $("#addProjectBudget");
     const descriptionInput = $("#addProjectDesc")
     const statusInput = $("#addProjectStatus");
-    var memberSelect = $("#addProjectTeamMembers")
+    const teamMembers = $("#addProjectTeamMembers")
 
     let url = window.location.search;
     let projectId;
@@ -21,12 +20,12 @@ $(document).ready(function () {
       }
 
     function fillArea () {
-    memberSelect.empty();
+    teamMembers.empty();
     var rowsToAdd = [];
     for (var i = 0; i<members.length; i++) {
         rowsToAdd.push(createNewRow(members[i]));
     }
-    memberSelect.prepend(rowsToAdd);
+    teamMembers.prepend(rowsToAdd);
     }
 
     function createNewRow(member) {
