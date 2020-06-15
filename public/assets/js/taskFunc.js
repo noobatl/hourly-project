@@ -34,18 +34,18 @@ $(document).ready(function() {
 
     console.log(newTask);
 
-    var taskAppend = ` 
-    <li class="task-item">
-      <p>
-          <input type="checkbox" class="completed-task">
-          <span class="task-title">${newTask.taskName}</span><br/>
-          <strong>Assigned to: </strong><span class="task-assignee">${memberSelect.val()}</span><br/>
-      </p>
-    </li>
+    // var taskAppend = ` 
+    // <li class="task-item">
+    //   <p>
+    //       <input type="checkbox" class="completed-task">
+    //       <span class="task-title">${newTask.taskName}</span><br/>
+    //       <strong>Assigned to: </strong><span class="task-assignee">${memberSelect.val()}</span><br/>
+    //   </p>
+    // </li>
     
-      `
+    //   `
 
-      $("#appendTask").prepend(taskAppend);
+    //   $("#appendTask").prepend(taskAppend);
 
     $.post('/api/Task', newTask, function() {
       $("#taskModal").modal("hide");
