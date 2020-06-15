@@ -50,7 +50,7 @@ module.exports = function (app) {
     });
 
 
-    app.put("/api/task", function (req, res) {
+    app.put("/api/Task", function (req, res) {
         db.Task.update({
 
             taskName: req.body.taskName,

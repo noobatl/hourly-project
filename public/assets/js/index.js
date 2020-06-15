@@ -53,8 +53,8 @@ $("#addMemberBtn").on("click", function () {
 $(document).ready(function () {
     const projectList = $("#projectList")
 
-    $(document).on("click", "button.delete", handleProjectDelete)
-    $(document).on("click", "button.edit", handleProjectEdit)
+    $(document).on("click", "#buttonDelete", handleProjectDelete)
+    $(document).on("click", "#buttonEdit", handleProjectEdit)
     $(document).on("click", "#projectTitle", projectDetails)
 
     let url = window.location.search;
@@ -168,6 +168,7 @@ $(document).ready(function () {
             <p class="current-project-desc"> ${currentProject.description}</p>
         `)
 
+        getTasks(currentProject.projectId)
 
     }
 
