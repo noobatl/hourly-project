@@ -15,10 +15,10 @@ $(document).ready(function () {
         this.value = this.value.replace(/[^0-9\.]/g,''); 
     });
 
-    $(savebutton).on("click", handleFormSubmit);
+    $("#savebutton").on("click", handleFormSubmit);
 
     function handleFormSubmit(event) {
-        event.preventDefault();
+        // event.preventDefault();
         if (!Date() || !selectedTaskId || !newTimeEntryAmount.val()) {
             return;
         }
@@ -31,10 +31,11 @@ $(document).ready(function () {
 
         }
         submitTime(timeEntry)
+
     }
     function submitTime(time) {
         $.post("/api/Time", time, function () {
-            $('#timeModal').modal('toggle');
+            $("#timeModal").empty().hide();
             window.location.reload();
         })
     }

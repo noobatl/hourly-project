@@ -1,14 +1,37 @@
 //Creating a new project
 $(document).ready(function () {
     const titleInput = $("#addProjectName");
-    const teamMembers = $("#addProjectTeamMembers");
     const budgetInput = $("#addProjectBudget");
     const descriptionInput = $("#addProjectDesc")
     const statusInput = $("#addProjectStatus");
+    const teamMembers = $("#addProjectTeamMembers")
 
     let url = window.location.search;
     let projectId;
     let updating = false;
+
+    memberData();
+
+    function memberData () {
+        $.get('/api/User', function(data) {
+          members = data;
+          fillArea();
+        });
+      }
+
+    function fillArea () {
+    teamMembers.empty();
+    var rowsToAdd = [];
+    for (var i = 0; i<members.length; i++) {
+        rowsToAdd.push(createNewRow(members[i]));
+    }
+    teamMembers.prepend(rowsToAdd);
+    }
+
+    function createNewRow(member) {
+        var newRow = `<option>${member.firstname} ${member.lastname}</option>`
+        return newRow;
+      };
 
     
     if (url.indexOf("?project_id=") !== -1) {
@@ -69,7 +92,7 @@ $(document).ready(function () {
 
         console.log(project)
         $.ajax({
-            method: "PUT",
+            method: "POST",
             url: "/api/Project",
             data: project
         }).then(function(){

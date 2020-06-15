@@ -28,7 +28,7 @@ module.exports = function (app) {
             
             taskName: req.body.taskName,
             projectId: req.body.projectId,
-            assignedUserID: req.body.assignedUserID,
+            userId: req.body.userId,
             taskDescription: req.body.taskDescription,
 
 
@@ -50,12 +50,12 @@ module.exports = function (app) {
     });
 
 
-    app.put("/api/task", function (req, res) {
+    app.put("/api/Task", function (req, res) {
         db.Task.update({
 
             taskName: req.body.taskName,
             projectId: req.body.projectId,
-            assignedUserID: req.body.assignedUserID,
+            userId: req.body.userId,
             taskDescription: req.body.taskDescription,
 
 

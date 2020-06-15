@@ -13,7 +13,7 @@
     <body>
         <div class="container header">
             <nav class="navbar sticky-top navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="/projects"><img src="/assets/img/hourly-logo.PNG" class="site-logo"></a>
+                <a href="/home" class="navbar-brand" href="/projects"><img src="/assets/img/hourly-logo.PNG" class="site-logo"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -47,16 +47,12 @@
                         <!-- <li class="project-1">Project 1</li> -->
 
                     </div>
-                    <p class="add-project"><a href="add-project.html"><i class="fas fa-plus"></i> Add Project</a></p>
+                    <p class="add-project"><a href="/add"><i class="fas fa-plus"></i> Add Project</a></p>
                 </div>
                 <div class="col project-details-wrapper">
                     <h2>Project Details</h2>
                     <div class="current-project-details">
-                        <h3 class="selected-project"><!--Loads name of project selected--></h3><p class="project-change-icons"><i class="fas fa-edit edit-project"></i><i class="fas fa-save save-project"></i><i class="fas fa-trash delete-project"></i></p>
-                        <p class="project-status"><strong>Status:</strong><span class="current-project-status"><!--Queried from Project table based on Current Project Selected--></span></p>
-                        <p class="project-assignees"><strong>Assignees:</strong><span class="current-project-assignees"><!--Queried from Project table based on Current Project Selected--></span></p>
-                        <p class="project-budget"><strong>Budget:</strong><span class="current-project-budget"><!--Queried from Project table based on Current Project Selected--></span></p>
-                        <p class="current-project-desc"><!--Queried from Project table based on Current Project Selected--></p>
+                        <p>Please select a project from the list</p>
 
                         <div class="current-project-task">
                             <ul class="list-of-project-task" id="appendTask">
@@ -73,8 +69,9 @@
                             </ul>
                         </div>
 
-                        <button class="add-task" id="addTaskBtn" data-toggle="modal" data-target="#taskModal"><i class="fas fa-plus"></i> Add Task</button>
                     </div>
+                    <button class="add-task" id="addTaskBtn" data-toggle="modal" data-target="#taskModal"><i class="fas fa-plus"></i> Add Task</button>
+
                 </div>
             </div>
         </div>
@@ -94,19 +91,19 @@
                                 <input type="input" class="form-control" id="newTaskName" placeholder="Task Name">
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1">Assigned Team Member:</label>
-                                <select class="form-control custom-select" id="teamSelect">
-                                    <!-- Options will be loaded based on active members -->
-                                    <!-- Sample Option -->
-                                    <!-- <option>Team Member Name</option> -->
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <label for="exampleFormControlSelect2">Assigned Project:</label>
                                 <select class="form-control" id="projectSelect">
                                     <!-- Options will be loaded based on active projects -->
                                     <!-- Sample Option -->
                                     <!-- <option>Project Name</option> -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Assigned Team Member:</label>
+                                <select class="form-control custom-select" id="teamSelect">
+                                    <!-- Options will be loaded based on active members -->
+                                    <!-- Sample Option -->
+                                    <!-- <option>Team Member Name</option> -->
                                 </select>
                             </div>
                             <div class="form-group">
@@ -129,5 +126,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <script src="/assets/js/taskFunc.js"></script>
         <script src="/assets/js/index.js"></script>
+        <script src="/assets/js/add-project.js"></script>
     </body>
 </html>
