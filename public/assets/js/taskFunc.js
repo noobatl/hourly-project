@@ -20,7 +20,6 @@ $(document).ready(function() {
     var actualUserID = memberSelect[0].selectedIndex;
     actualUserID = actualUserID +1;
     parseInt(actualUserID);
-    window.alert(actualUserID);
 
     var newTask = {
       taskName: newTaskName.val().trim(),
