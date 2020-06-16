@@ -28,6 +28,7 @@ module.exports = function (app) {
             
             taskName: req.body.taskName,
             projectId: req.body.projectId,
+            ProjectProjectId: req.body.projectId,
             userId: req.body.userId,
             taskDescription: req.body.taskDescription,
 
