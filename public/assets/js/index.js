@@ -51,7 +51,9 @@ $("#addMemberBtn").on("click", function () {
 
 //Get Projects
 $(document).ready(function () {
+
     const projectList = $("#projectList")
+    var projectInfo = [];
 
     $(document).on("click", "#projectDelete", handleProjectDelete)
     $(document).on("click", "#projectEdit", handleProjectEdit)
@@ -61,7 +63,7 @@ $(document).ready(function () {
     let projectId;
     if (url.indexOf("?project_id=") !== -1) {
         projectId = url.split("=")[1];
-        getProject(projectId)
+        getProject(projectId);
     }
     else {
         getProject();
@@ -80,9 +82,11 @@ $(document).ready(function () {
             }
             else {
                 projectList.empty();
+                projectInfo = [];
                 const projectsToAdd = [];
                 for (let i = 0; i < data.length; i++) {
                     projectsToAdd.push(createRow(data[i]));
+                    projectInfo.push(data[i]);
                 }
 
                 projectList.append(projectsToAdd)
@@ -132,10 +136,9 @@ $(document).ready(function () {
         let updatedLast = new Date(project.updatedAt);
         //updatedLast= moment(updatedLast).format("MMMM Do YYYY, h:mm:ss a");
 
-        let projectCard = projectList.prepend(
-            `<div class="card"><div class="card-header">
-            <div class = "row">
-            <h3 class="col-md-9" id="projectTitle"><a href="#">${project.title}</a></h3>
+        let projectCard = projectList.append(
+            `<div class="card" id="${project.title}"><div class="card-header">
+            <h3 id="projectTitle"><a href="#">${project.title}</a></h3><button class="delete btn btn-danger" id="projectDelete"><i class="fas fa-trash delete-project"></i></button>
             <button class="edit btn btn-info" id="projectEdit"><i class="fas fa-edit edit-project"></i></button>
             <button class="delete btn btn-danger" id="projectDelete"><i class="fas fa-trash delete-project"></i></button>
             </div>
@@ -150,6 +153,7 @@ $(document).ready(function () {
         projectCard.data("project", project)
 
         return projectCard;
+
     }
 
     function displayEmpty() {
@@ -183,26 +187,52 @@ $(document).ready(function () {
         }
         else { return; }
     }
-
-    function projectDetails(display) {
+    
+    function projectDetails () {
         $(".current-project-details").empty()
-
-        let currentProject = $(this)
-            .parent().parent().parent().parent().data("project")
+        var selectedProject = event.target.innerHTML;
+        for(var i = 0;i < projectInfo.length; i++){
+            if(projectInfo[i].title == selectedProject){
+                selectedProject = projectInfo[i].projectId;
+                selectedProject = selectedProject - 1;
+            }
+        }
+        let currentProject = projectInfo[selectedProject];
 
         $(".current-project-details").append(`
             <h3 class="selected-project">${currentProject.title}</h3>
-            <p class="project-status"><strong>Status: ${currentProject.status}</strong><span class="current-project-status"></span></p>
-            <p class="project-assignees"><strong>Assignees: ${currentProject.team}</strong><span class="current-project-assignees"></span></p>
-            <p class="project-budget"><strong>Budget: $${currentProject.budget}</strong><span class="current-project-budget"></span></p>
+            <p class="project-status"><strong>Status: </strong><span class="current-project-status">${currentProject.status}</span></p>
+            <p class="project-assignees"><strong>Assignees: </strong><span class="current-project-assignees">${currentProject.team}</span></p>
+            <p class="project-budget"><strong>Budget (in hours): </strong><span class="current-project-budget">${currentProject.budget}</span></p>
             <p><strong>Description:</strong></p>
             <p class="current-project-desc"> ${currentProject.description}</p>
         `)
-
-        getTasks(currentProject.projectId)
-
+        getTasks(currentProject.projectId);
     }
+    var tasks;
+    var name;
 
+    function getTasks(id) {
+        $.when(
+            $.get("/api/Task", function (data) {
+                tasks = data;
+            })
+        ).done( function() {
+            for (var i =0;i<tasks.length;i++){
+                if(tasks[i].projectId == id) {
+                    $(".current-project-details").append(`
+                    <li class="task-item">
+                        <p>
+                            <input type="checkbox" class="completed-task">
+                            <span class="task-title">${tasks[i].taskName}</span><br/>
+                            <strong>Assigned to: </strong><span class="task-assignee">${tasks[i].User.firstname} ${tasks[i].User.lastname}</span><br/>
+                        </p>
+                    </li>
+                    `)
+                }
+            }
+        })
+    }
 
 
     getProject();
