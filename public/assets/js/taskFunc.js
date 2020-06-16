@@ -3,8 +3,6 @@ $(document).ready(function() {
   var projectSelect = $("#projectSelect");
   var members = [];
   var projects = [];
-  let taskProjectId;
-  let queryUrl;
 
   var newTaskName = $("#newTaskName");
   var body = $("#description");
