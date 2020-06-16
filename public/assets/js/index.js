@@ -95,31 +95,6 @@ $(document).ready(function () {
         })
     }
 
-    
-    function getTasks (id) {
-        console.log(id)
-        $.get("api/Task", function (data) { 
-            let filteredTasks = data.filter(function(tasks){
-                
-                return tasks.projectId == id;
-            })
-
-            $("#task-display").empty()
-
-            filteredTasks.forEach(task => {
-                $("#task-display").prepend(`
-                <div class = "col-md-3"><div class = "card" id ="taskCard">
-                <div class = "card-header" id = "task-header"><h5 style="color:white;">${task.taskName}</h5></div>
-                <strong>Assigned to: FIX ME WITH USER!!</strong>
-                <small><details><p>${task.taskDescription}</p>
-                <p>Created on: ${task.createdAt}</p>
-                </div></div></details></small> <br>
-                `)
-            });
-         })                   
-        
-    }
-
 
     function deleteProject(id) {
         $.ajax({
@@ -131,10 +106,6 @@ $(document).ready(function () {
     }
 
     function createRow(project) {
-        var formattedDate = new Date(project.createdAt);
-        //formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
-        let updatedLast = new Date(project.updatedAt);
-        //updatedLast= moment(updatedLast).format("MMMM Do YYYY, h:mm:ss a");
 
         let projectCard = projectList.append(
             `<div class="card" id="${project.title}"><div class="card-header">
@@ -142,13 +113,8 @@ $(document).ready(function () {
             <button class="edit btn btn-info" id="projectEdit"><i class="fas fa-edit edit-project"></i></button>
             <button class="delete btn btn-danger" id="projectDelete"><i class="fas fa-trash delete-project"></i></button>
             </div>
-            <div class= "row">
-            <details class = "col-md-12"><p>${project.status}</p>
-            <small>Created: ${formattedDate}</small>
-            <small>Last Updated: ${updatedLast}</small></details></div>
-            </div>
             </div>`
-            
+
         )
         projectCard.data("project", project)
 
@@ -186,12 +152,13 @@ $(document).ready(function () {
         }
         else { return; }
     }
-    
-    function projectDetails () {
+
+    function projectDetails() {
         $(".current-project-details").empty()
+        $("#task-section").empty()
         var selectedProject = event.target.innerHTML;
-        for(var i = 0;i < projectInfo.length; i++){
-            if(projectInfo[i].title == selectedProject){
+        for (var i = 0; i < projectInfo.length; i++) {
+            if (projectInfo[i].title == selectedProject) {
                 selectedProject = projectInfo[i].projectId;
                 selectedProject = selectedProject - 1;
             }
@@ -200,7 +167,6 @@ $(document).ready(function () {
         let currentProject = projectInfo[selectedProject];
         let team = currentProject.team;
         team = JSON.parse(team)
-        console.log(team)
 
         $(".current-project-details").append(`
             <h3 class="selected-project">${currentProject.title}</h3>
@@ -209,35 +175,40 @@ $(document).ready(function () {
             <p class="project-budget"><strong>Budget (in hours): </strong><span class="current-project-budget">${currentProject.budget}</span></p>
             <p><strong>Description:</strong></p>
             <p class="current-project-desc"> ${currentProject.description}</p>
+            <small>Created on: ${currentProject.createdAt}</small>
+            <small>Last updated: ${currentProject.updatedAt}</small>
         `)
+
         team.forEach(member => {
             $(".current-project-assignees").append(member + ", ")
         });
 
         $("#task-section").append(`
-        <h2>Task</h2><button class="add-task" id="addTaskBtn" data-toggle="modal" data-target="#taskModal"><i class="fas fa-plus"></i> Add Task</button>`)
-       
+        <h2 class="col-md-10">Task</h2><button class="add-task" id="addTaskBtn" style= "float : right;"data-toggle="modal" data-target="#taskModal"><i class="fas fa-plus"></i> Add Task</button>`)
+
         getTasks(currentProject.projectId);
     }
     var tasks;
     var name;
 
     function getTasks(id) {
+        $("#task-display").empty();
+
         $.when(
             $.get("/api/Task", function (data) {
                 tasks = data;
             })
-        ).done( function() {
-            for (var i =0;i<tasks.length;i++){
-                if(tasks[i].projectId == id) {
-                    $(".current-project-details").append(`
-                    <li class="task-item">
-                        <p>
-                            <input type="checkbox" class="completed-task">
-                            <span class="task-title">${tasks[i].taskName}</span><br/>
-                            <strong>Assigned to: </strong><span class="task-assignee">${tasks[i].User.firstname} ${tasks[i].User.lastname}</span><br/>
-                        </p>
-                    </li>
+        ).done(function () {
+            for (var i = 0; i < tasks.length; i++) {
+                if (tasks[i].projectId == id) {
+                    $("#task-display").append(`
+                    <div class = "col-md-3"><div class = "card" id ="taskCard">
+                <div class = "card-header" id = "task-header"><h5 style="color:white;">${tasks[i].taskName}</h5></div><br>
+                <strong>Assigned to: ${tasks[i].User.firstname} ${tasks[i].User.lastname}</strong>
+                <details><p>${tasks[i].taskDescription}</p>
+                <p>Created on: ${tasks[i].createdAt}</p>
+                </div></div></details> <br>          
+        
                     `)
                 }
             }
