@@ -9,23 +9,7 @@ $(document).ready(function () {
         });
     }
 
-    function getTasks() {
-        $.get('/api/Task', function (data) {
-            renderTasks(data);
-        });
-    }
-
     getTime();
-    getTasks();
-
-    function renderTasks(data) {
-        for (var i=0; i< data.length; i++) {
-            var task = data[i].taskName;
-            $("#taskSelect").append(`
-            <option class="time-entry-active-project-task">${task}</option>
-            `)
-        }
-    }
 
 
     function renderdata(data) {
