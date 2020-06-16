@@ -46,7 +46,7 @@ module.exports = function (sequelize, DataTypes) {
     Project.associate = function (models) {
         Project.hasMany(models.Task, {
             onDelete: "cascade",
-            foreignKey: 'taskId'
+            //foreignKey: 'taskId'
         });
     };
     return Project;

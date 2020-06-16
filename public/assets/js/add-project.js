@@ -47,18 +47,20 @@ $(document).ready(function () {
             window.alert("Please make sure all fields are filled out.")
             return;
         }
+        let team = teamMembers.val();
+        team = JSON.stringify(team)
+        console.log(team)
 
         let newProject = {
             title : titleInput.val().trim(),
             budget : budgetInput.val(),
             description : descriptionInput.val().trim(),
-            team : teamMembers.val(),
-            status : statusInput.val(),
-            projectId : projectId         
+            team : team,
+            status : statusInput.val()     
         }
 
         if (updating) {
-            newProject.id = projectId
+            newProject.projectId = projectId
             updateProject(newProject)
         }
         else{

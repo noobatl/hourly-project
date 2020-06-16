@@ -138,7 +138,7 @@ $(document).ready(function () {
 
         let projectCard = projectList.append(
             `<div class="card" id="${project.title}"><div class="card-header">
-            <h3 id="projectTitle"><a href="#">${project.title}</a></h3><button class="delete btn btn-danger" id="projectDelete"><i class="fas fa-trash delete-project"></i></button>
+            <h3 id="projectTitle"><a href="#">${project.title}</a></h3>
             <button class="edit btn btn-info" id="projectEdit"><i class="fas fa-edit edit-project"></i></button>
             <button class="delete btn btn-danger" id="projectDelete"><i class="fas fa-trash delete-project"></i></button>
             </div>
@@ -170,7 +170,6 @@ $(document).ready(function () {
             .parent()
             .parent()
             .parent()
-            .parent()
             .data("project")
         console.log(currentProject)
         window.location.href = "/add?project_id=" + currentProject.projectId;
@@ -181,7 +180,7 @@ $(document).ready(function () {
 
         if (answer) {
             let currentProject = $(this)
-                .parent().parent().parent().parent().data("project")
+                .parent().parent().parent().data("project")
             console.log(currentProject)
             deleteProject(currentProject.projectId)
         }
@@ -197,16 +196,27 @@ $(document).ready(function () {
                 selectedProject = selectedProject - 1;
             }
         }
+
         let currentProject = projectInfo[selectedProject];
+        let team = currentProject.team;
+        team = JSON.parse(team)
+        console.log(team)
 
         $(".current-project-details").append(`
             <h3 class="selected-project">${currentProject.title}</h3>
             <p class="project-status"><strong>Status: </strong><span class="current-project-status">${currentProject.status}</span></p>
-            <p class="project-assignees"><strong>Assignees: </strong><span class="current-project-assignees">${currentProject.team}</span></p>
+            <p class="project-assignees"><strong>Assignees: </strong><span class="current-project-assignees"></span></p>
             <p class="project-budget"><strong>Budget (in hours): </strong><span class="current-project-budget">${currentProject.budget}</span></p>
             <p><strong>Description:</strong></p>
             <p class="current-project-desc"> ${currentProject.description}</p>
         `)
+        team.forEach(member => {
+            $(".current-project-assignees").append(member + ", ")
+        });
+
+        $("#task-section").append(`
+        <h2>Task</h2><button class="add-task" id="addTaskBtn" data-toggle="modal" data-target="#taskModal"><i class="fas fa-plus"></i> Add Task</button>`)
+       
         getTasks(currentProject.projectId);
     }
     var tasks;
