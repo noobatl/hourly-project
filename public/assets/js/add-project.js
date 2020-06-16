@@ -56,10 +56,11 @@ $(document).ready(function () {
             budget : budgetInput.val(),
             description : descriptionInput.val().trim(),
             team : team,
-            status : statusInput.val()     
+            status : statusInput.val(),
+            projectId : projectId 
         }
 
-        if (updating) {
+        if (updating === true) {
             newProject.projectId = projectId
             updateProject(newProject)
         }
@@ -80,6 +81,7 @@ $(document).ready(function () {
         let queryUrl = "/api/Project/" + id;
 
         $.get(queryUrl, function(data) {
+        
             titleInput.val(data.title)
             teamMembers.val(data.team)
             budgetInput.val(data.budget)
@@ -94,7 +96,7 @@ $(document).ready(function () {
 
         console.log(project)
         $.ajax({
-            method: "POST",
+            method: "PUT",
             url: "/api/Project",
             data: project
         }).then(function(){
