@@ -52,12 +52,12 @@ $(document).ready(function () {
         console.log(team)
 
         let newProject = {
-            title : titleInput.val().trim(),
-            budget : budgetInput.val(),
-            description : descriptionInput.val().trim(),
-            team : team,
-            status : statusInput.val(),
-            projectId : projectId 
+            title: titleInput.val().trim(),
+            budget: budgetInput.val(),
+            description: descriptionInput.val().trim(),
+            team: team,
+            status: statusInput.val(),
+            projectId: projectId 
         }
 
         if (updating === true) {
