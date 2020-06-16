@@ -31,7 +31,7 @@ module.exports = function (app) {
 
         db.Project.create(req.body).then(function (dbProject) {
             res.json(dbProject);
-        });
+        }).catch(function(err){console.log(err, req.body)});
     });
 
     app.delete("/api/Project/:id", function (req, res) {
@@ -51,10 +51,10 @@ module.exports = function (app) {
             req.body,
             {
                 where: {
-                    projectId: req.body.id
+                    projectId: req.body.projectId
                 }
             }).then(function (dbProject) {
                 res.json(dbProject);
-            });
+            }).catch(function(err){console.log(err, req.body)});
     });
 }
