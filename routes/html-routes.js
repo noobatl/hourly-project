@@ -39,6 +39,10 @@ module.exports = function(app) {
       app.get("/time", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/time.html"));
       });
+
+      app.get("/addteam", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/add-user.html"));
+      });
     
     //ADD IN ISAUTHENTICATED LATER
     

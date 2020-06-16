@@ -18,7 +18,7 @@
 <body>
     <div class="container header">
         <nav class="navbar sticky-top navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="/projects"><img src="/assets/img/hourly-logo.PNG" class="site-logo"></a>
+            <a class="navbar-brand" href="/home"><img src="/assets/img/hourly-logo.PNG" class="site-logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -49,8 +49,8 @@
                     <input type="input" class="form-control" id="addProjectName" placeholder="Example">
                 </div>
                 <div class="form-group">
-                    <label for="addProjectTeamMembers">Add Team Members</label>
-                    <select class="form-control" id="addProjectTeamMembers">
+                    <label for="addProjectTeamMembers">Add Team Members (Hold shift to select multiple)</label>
+                    <select multiple class="form-control" id="addProjectTeamMembers">
                         <!-- Options will be loaded based on active members -->
                         <!-- Sample Option -->
                         <!-- <option>Team Member Name</option> -->
@@ -74,9 +74,7 @@
                 </div>
                 <!-- <p class="add-task"><i class="fas fa-plus"></i> Add Task</p>
                 </form>     -->
-                <p class="project-change-icons"><button id="projectSave"><i class="fas fa-save save-project"
-                            ></i></button>
-                    <button id="projectDelete"><i class="fas fa-trash delete-project"></i></button></p>
+                <p class="project-change-icons"><button id="projectSave"><i class="fas fa-save save-project"></i></button></p>
         </div>
     </div>
     <!-- Vertically centered modal : Add New Task-->
@@ -96,7 +94,7 @@
                             <input type="input" class="form-control" id="newTaskName" placeholder="First Name">
                         </div>
                         <div class="form-group">
-                            <label for="taskFormControlSelect1">Assigned To:</label>
+                            <label for="taskFormControlSelect1">Assigned To: (Hold shift to select multiple)</label>
                             <select class="form-control" id="taskFormControlSelect1">
                                 <!-- Options will be loaded based on active members -->
                                 <!-- Sample Option -->
