@@ -1,6 +1,7 @@
-h1,h2,h3,h4,h5,h6{
+h1,h2,h3,h4,h5,h6, #projectTitle a{
     color:#080b4d;
 }
+
 
 .site-logo{
     max-width: 200px;
@@ -23,7 +24,7 @@ h1,h2,h3,h4,h5,h6{
     text-decoration: underline;
 }
 
-.logout, button, #projectEdit, #projectDelete, #task-header, #member-header{
+button, #projectEdit, #projectDelete, #task-header, #member-header, .add-project a,.add-member{
     background: #080b4d;
     padding: 5px 10px;
     border-radius: 5px;
@@ -33,15 +34,43 @@ h1,h2,h3,h4,h5,h6{
     color:#fff;
 }
 
-#projectDelete{
-    float: right;
+.logout{
+    background: transparent;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #080b4d;
+    text-transform: uppercase;
+    font-size: 10px;
+    color:#080b4d;
 }
-#projectEdit{
+
+#projectDelete, #projectEdit{
     float: right;
+    margin-top: 6px;
 }
 #projectTitle{
     float: left;
+    font-size: 18px;
+    margin-top: 6px;
+    margin-bottom: 0;
 }
 #taskCard{
     text-align: center;
+}
+
+
+.list-of-projects{
+    padding: 5px 10px;
+}
+
+#userList .card{
+    padding: 15px;
+}
+
+#addMemberBtn{
+    max-height: 30px;
+}
+
+#addTimeBtn{
+    margin-left: 20px;
 }
