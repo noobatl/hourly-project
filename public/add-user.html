@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hourly - Task Management System</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container header">
+      <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="/projects"
+          ><img src="/assets/img/hourly-logo.PNG" class="site-logo"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/home">Projects</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/team"
+                >Team Members <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/time">Time</a>
+            </li>
+          </ul>
+          <div class="form-inline my-2 my-lg-0">
+            <a class="logout btn-primary" href="#">Logout</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+      <div class="row">
+        <form class="new-user">
+          <div class="form-group">
+            <label for="addFirstName">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="addFirstName"
+              placeholder="Thomas"
+            />
+          </div>
+          <div class="form-group">
+            <label for="addLastName">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="addLastName"
+              placeholder="Anderson"
+            />
+          </div>
+          <div class="form-group">
+            <label for="addRole">Role</label>
+            <input
+              type="text"
+              class="form-control"
+              id="addRole"
+              placeholder="The One"
+            />
+          </div>
+          <div class="form-group">
+            <label for="addEmail">Email Address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="addEmail"
+              placeholder="neo@thematrix.com"
+            />
+          </div>
+          <!-- <div class="form-group">
+            <label for="addPassword">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="addPassword"
+              placeholder="***********"
+            />
+          </div> -->
+          <div class="modal-footer">
+            <button href="/home">Cancel</button>
+            <button type="submit" class="btn btn-success submit">Submit</button>
+          </div>
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button"save class="btn btn-secondary">
+          Close
+        </button>
+        <button id="userSave" type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Assets -->
+    <script type="text/javascript" src="./assets/js/index.js"></script>
+    <script type="text/javascript" src="./assets/js/add-user.js"></script>
+  </body>
+</html>
