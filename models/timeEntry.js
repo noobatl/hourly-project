@@ -20,7 +20,9 @@ module.exports = function (sequelize, DataTypes) {
 
   TimeEntry.associate = function (models) {
     TimeEntry.belongsTo(models.Task, {
-      foreignKey: "taskId",
+      foreignKey: {
+        allowNull: false
+      }
     });
   };
 
