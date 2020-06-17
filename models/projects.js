@@ -32,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Project.belongsToMany(models.User, {
-      through: "UserProject",
+      through: "userProject",
       foreignKey: "projectId",
     });
   };
