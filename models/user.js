@@ -34,7 +34,7 @@ module.exports = function (sequelize, DataTypes) {
       // Associating User with Tasks
       User.hasMany(models.Task, {});
       User.belongsToMany(models.Project, {
-        through: "userProject",
+        through: "UserProject",
       });
     };
     return User;
