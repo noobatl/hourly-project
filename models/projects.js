@@ -36,11 +36,5 @@ module.exports = function (sequelize, DataTypes) {
       foreignKey: "projectId",
     });
   };
-
-  // Project.associate = function (models) {
-  //   Project.hasMany(models.Task, {
-  //     onDelete: "cascade",
-  //   });
-  // };
   return Project;
 };
